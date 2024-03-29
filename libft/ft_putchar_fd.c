@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:14:55 by ahamdi           ###   ########.fr       */
+/*   Created: 2023/12/08 19:29:44 by ahamdi            #+#    #+#             */
+/*   Updated: 2023/12/20 10:52:08 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-# ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include "libft/libft.h"
-
-
-void del(void* content);
-void sa(int **stak, int len, char c);
-void ss(int **stak_a, int **stak_b, int len_a, int len_b);
-int cheek(char *str);
-int delete_double(t_list *stak_a);
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write (fd, &c, 1);
+}

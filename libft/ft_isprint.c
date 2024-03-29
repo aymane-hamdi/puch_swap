@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:14:55 by ahamdi           ###   ########.fr       */
+/*   Created: 2023/12/04 16:17:10 by ahamdi            #+#    #+#             */
+/*   Updated: 2023/12/22 16:45:46 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-# ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include "libft/libft.h"
-
-
-void del(void* content);
-void sa(int **stak, int len, char c);
-void ss(int **stak_a, int **stak_b, int len_a, int len_b);
-int cheek(char *str);
-int delete_double(t_list *stak_a);
-#endif
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
+}

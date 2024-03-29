@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:14:55 by ahamdi           ###   ########.fr       */
+/*   Created: 2023/12/08 21:23:47 by ahamdi            #+#    #+#             */
+/*   Updated: 2023/12/10 15:31:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-# ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include "libft/libft.h"
-
-
-void del(void* content);
-void sa(int **stak, int len, char c);
-void ss(int **stak_a, int **stak_b, int len_a, int len_b);
-int cheek(char *str);
-int delete_double(t_list *stak_a);
-#endif
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write (fd, "-2147483648", 11);
+	}
+	else if (n < 0)
+	{
+		write (fd, "-", 1);
+		n *= -1;
+		ft_putnbr_fd(n, fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd(48 + n, fd);
+	}
+}

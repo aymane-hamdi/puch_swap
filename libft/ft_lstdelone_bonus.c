@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:14:55 by ahamdi           ###   ########.fr       */
+/*   Created: 2023/12/13 17:17:45 by ahamdi            #+#    #+#             */
+/*   Updated: 2023/12/25 17:48:33 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-# ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include "libft/libft.h"
-
-
-void del(void* content);
-void sa(int **stak, int len, char c);
-void ss(int **stak_a, int **stak_b, int len_a, int len_b);
-int cheek(char *str);
-int delete_double(t_list *stak_a);
-#endif
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (lst == NULL || del == NULL)
+		return ;
+	if (del != NULL )
+		del (lst->content);
+	free (lst);
+}
