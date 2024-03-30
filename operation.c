@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:53:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/29 23:56:05 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/30 01:27:04 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void ss(t_list **stak_a,t_list **stak_b)
 // // }
 void push(t_list **from_stak, t_list **to_stak, char c)
 {
-    
+    t_list *last;
+    t_list *prev;
+
     if(c == 'a' && *from_stak == NULL)
     {
         write(1,"Error\n",6);
@@ -54,6 +56,14 @@ void push(t_list **from_stak, t_list **to_stak, char c)
         write(1,"Error\n",6);
         exit(1);
     }
-    ft_lstadd_front(to_stak, ft_lstlast(*from_stak));
-    ft_lstdelone(ft_lstlast(*from_stak), del);
+    last = ft_lstlast(*from_stak);
+    prev = *from_stak;
+    while (prev->next != last)
+    {
+        prev = prev->next;
+    }
+    prev->next = NULL;
+
+    ft_lstadd_front(to_stak, last);
+    ft_lstdelone(last, del);
 }

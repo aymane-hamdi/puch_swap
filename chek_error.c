@@ -20,22 +20,20 @@ int cheek(char *str)
     return(1);
 }
 
-int delete_double( t_list *stak_a)
+int delete_double(t_list *stak_a)
 {
-   t_list *help;
-    t_list *help2;
+    t_list *help;
 
-    help = stak_a;
-    help2 =help->next;
-    while(help)
+    while(stak_a)
     {
-        while(help2)
+        help = stak_a->next;
+        while(help)
         {
-            if (help->content == help ->next->content)
+            if ((int)stak_a->content == (int)help->content)
                 return(0);
-            help2 = help2->next;
+            help = help->next;
         }
-        help = help->next;
+        stak_a = stak_a->next;
     }
     return(1);
 }
