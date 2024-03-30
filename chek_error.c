@@ -23,13 +23,17 @@ int cheek(char *str)
 int delete_double( t_list *stak_a)
 {
    t_list *help;
+    t_list *help2;
 
+    help = stak_a;
+    help2 =help->next;
     while(help)
     {
-        while(help ->next)
+        while(help2)
         {
-            if (help->content ==help ->next->content)
+            if (help->content == help ->next->content)
                 return(0);
+            help2 = help2->next;
         }
         help = help->next;
     }

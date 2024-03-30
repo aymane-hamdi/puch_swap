@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:14:55 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/29 23:47:23 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 
 
 void del(void* content);
-void sa(int **stak, int len, char c);
-void ss(int **stak_a, int **stak_b, int len_a, int len_b);
+void sa( t_list **stak, char c);
+void ss(t_list **stak_a,t_list **stak_b);
+void push(t_list **stak_a, t_list **stak_b, char c);
 int cheek(char *str);
 int delete_double(t_list *stak_a);
 #endif

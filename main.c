@@ -6,25 +6,27 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 23:05:21 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/29 23:56:31 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void ptint_stak(int *stak_a, int len)
+void ptint_stak( t_list  *stak_a)
 {
-    int i;
+     t_list  *help;
     
-    if (stak_a == NULL || len <= 0) {
+    help = stak_a;
+    if (stak_a == NULL){
         write(1, "Invalid input.\n", 15);
         return;
     }
-    i = 0;
-    while(i < len)
+
+    while(help)
     {
-        printf("**%d**\n",stak_a[i]);
-        i++;
+      printf("%d\n", *((int *)help->content));
+        help = help->next;
+
     }
 }
 
@@ -41,26 +43,20 @@ int main(int argc , char ** argv)
     if(argc == 2)
     {
         argv = ft_split(argv[1],' ');
+        if(!argv)
+        {
+            write(1,"Error\n",6);
+            exit(1);
+        }
         i = -1;
     }
-    if(!argv)
-    {
-        write(1,"Error\n",6);
-        exit(1);
-    }
-    i++;
-    while(argv[i++])
+    while(argv[++i])
     {
         if(cheek(argv[i]) == 1)
         { 
-         int *p = malloc(sizeof(int));
-            if (p == NULL) // Check if malloc succeeded
-            {
-                write(1,"Error\n",6);
-                exit(1);
-            }
+            p = malloc(sizeof(int));
             *p = ft_atoi(argv[i]);
-            t_list *neoud = ft_lstnew(p);
+            neoud = ft_lstnew(p);
             if (neoud == NULL) // Check if ft_lstnew succeeded
             {
                 free(p); // Free p to avoid memory leak
@@ -76,12 +72,19 @@ int main(int argc , char ** argv)
             exit(1);
         }
     }
-    
    if(delete_double(stak_a ) == 0)
     {
         ft_lstclear(&stak_a, del);
         write(1,"Error\n",6);
         exit(1);
     }
-    i++;
+    else
+    {
+        push(&stak_a, &stak_b, 'a');
+        ptint_stak(stak_a);
+        printf("**********\n");
+        ptint_stak(stak_b);
+    }
+   
+    return(0);
 }

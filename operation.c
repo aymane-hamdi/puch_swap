@@ -1,58 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instraction.c                                      :+:      :+:    :+:   */
+/*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:53:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 18:24:31 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/29 23:56:05 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void sa(int **stak, int len, char c)
+void sa(t_list **stak, char c)
 {
-    int tmp;
+    t_list *tmp;
 
-    if(len < 2 || !(*stak)[0] || !(*stak)[1])
+    if(*stak == NULL || (*stak)->next == NULL)
     {
         write(1,"Error\n",6);
-	    return ;
+        return;
     }
-    tmp = (*stak)[0];
-   (*stak)[0] =(*stak)[1];
-   (*stak)[1] = tmp;
-   if(c == 'a')
-     write(1,"swap a\n",7);
-    if(c == 'b')
-     write(1,"swap b\n",7);
-}
-void ss(int **stak_a, int **stak_b, int len_a, int len_b)
-{
-    sa(stak_a, len_a,'a');
-      sa(stak_b, len_b,'b');
-}
-void met_data(int **stak_1, int **stak_2, int len_1, int len_2)
-{
-    
-}
-void ss(int **stak_a, int **stak_b, int len_a, int len_b , char c)
-{
-    if(c == 'b' ,len_a == 0)
-    {
-        write(1,"Error\n",6);
-        exit(1);
-    }
-    if(c == 'a' ,len_b == 0)
-    {
-        write(1,"Error\n",6);
-        exit(1);
-    }
-    
+
+    tmp = (*stak)->next;
+    (*stak)->next = tmp->next;
+    tmp->next = *stak;
+    *stak = tmp;
+
     if(c == 'a')
+        write(1,"swap a\n",7);
+    if(c == 'b')
+        write(1,"swap b\n",7);
+}
+void ss(t_list **stak_a,t_list **stak_b)
+{
+    sa(stak_a,'a');
+    sa(stak_b,'b');
+}
+// void met_data(int **stak_1, int **stak_2, int len_1, int len_2)
+// {
+    
+// // }
+void push(t_list **from_stak, t_list **to_stak, char c)
+{
+    
+    if(c == 'a' && *from_stak == NULL)
     {
-        
+        write(1,"Error\n",6);
+        exit(1);
     }
+    if(c == 'b' && *to_stak == NULL)
+    {
+        write(1,"Error\n",6);
+        exit(1);
+    }
+    ft_lstadd_front(to_stak, ft_lstlast(*from_stak));
+    ft_lstdelone(ft_lstlast(*from_stak), del);
 }
