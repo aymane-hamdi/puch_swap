@@ -29,7 +29,7 @@ int delete_double(t_list *stak_a)
         help = stak_a->next;
         while(help)
         {
-            if ((int)stak_a->content == (int)help->content)
+            if (*(int*)(stak_a->content) == *(int*)(help->content))
                 return(0);
             help = help->next;
         }

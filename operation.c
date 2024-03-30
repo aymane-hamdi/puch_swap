@@ -37,15 +37,40 @@ void ss(t_list **stak_a,t_list **stak_b)
     sa(stak_a,'a');
     sa(stak_b,'b');
 }
-// void met_data(int **stak_1, int **stak_2, int len_1, int len_2)
-// {
-    
-// // }
-void push(t_list **from_stak, t_list **to_stak, char c)
+void ft_lstdel_last(t_list **lst, void (*del)(void*))
 {
     t_list *last;
     t_list *prev;
 
+    if(!(*lst) || !del) 
+        return;
+
+    last = ft_lstlast(*lst);
+
+    // If the list has only one node
+    if (*lst == last)
+    {
+        del(last->content);
+        free(last);
+        *lst = NULL;
+    }
+    else
+    {
+        prev = *lst;
+        while(prev->next != last)
+            prev = prev->next;
+        prev->next = NULL;
+        del(last->content);
+        free(last);
+    }
+}
+void push(t_list **from_stak, t_list **to_stak, char c)
+{
+    if (from_stak == NULL || to_stak == NULL)
+    {
+        write(1, "Error: Null pointer\n", 20);
+        return;
+    }
     if(c == 'a' && *from_stak == NULL)
     {
         write(1,"Error\n",6);
@@ -56,14 +81,15 @@ void push(t_list **from_stak, t_list **to_stak, char c)
         write(1,"Error\n",6);
         exit(1);
     }
-    last = ft_lstlast(*from_stak);
-    prev = *from_stak;
-    while (prev->next != last)
-    {
-        prev = prev->next;
-    }
-    prev->next = NULL;
+   t_list *last_node;
 
-    ft_lstadd_front(to_stak, last);
-    ft_lstdelone(last, del);
+    if (*from_stak == NULL)
+    {
+        write(1, "Invalid input.\n", 15);
+        return;
+    }
+
+    last_node = ft_lstlast(*from_stak);
+    ft_lstadd_front(to_stak, last_node);
+    ft_lstdel_last(from_stak,del);
 }

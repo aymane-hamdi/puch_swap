@@ -16,17 +16,15 @@ void ptint_stak( t_list  *stak_a)
 {
      t_list  *help;
     
-    help = stak_a;
     if (stak_a == NULL){
         write(1, "Invalid input.\n", 15);
         return;
     }
-
+    help = stak_a;
     while(help)
     {
       printf("%d\n", *((int *)help->content));
         help = help->next;
-
     }
 }
 

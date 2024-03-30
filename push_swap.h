@@ -22,7 +22,7 @@
 void del(void* content);
 void sa( t_list **stak, char c);
 void ss(t_list **stak_a,t_list **stak_b);
-void push(t_list **stak_a, t_list **stak_b, char c);
+void push(t_list **from_stak, t_list **to_stak, char c);
 int cheek(char *str);
 int delete_double(t_list *stak_a);
 #endif
