@@ -45,10 +45,6 @@ void sort_tree_element(t_list **stak)
 void sort_four_element(t_list **stak_sort,t_list **stak2)
 {
     t_list *help;
-    int first;
-    int second;
-    int third;
-    int x;
     int min;
     int pos = 0;
     help = *stak_sort;
@@ -68,14 +64,14 @@ void sort_four_element(t_list **stak_sort,t_list **stak2)
         sort_tree_element(stak_sort);
         pa(stak_sort,stak2);
     }
-    if(pos == 1)
+    else if(pos == 2) // Changed this condition from pos == 1 to pos == 2
     {
         sa(stak_sort,'a');
         pb(stak_sort,stak2);
         sort_tree_element(stak_sort);
         pa(stak_sort,stak2);
     }
-    if(pos == 2)
+    else if(pos == 3) // Changed this condition from pos == 2 to pos == 3
     {
         ra(stak_sort);
         sa(stak_sort,'a');
@@ -83,86 +79,57 @@ void sort_four_element(t_list **stak_sort,t_list **stak2)
         sort_tree_element(stak_sort);
         pa(stak_sort,stak2);
     }
-    if(pos == 3)
+    else
     {
         rra(stak_sort);
         pb(stak_sort,stak2);
         sort_tree_element(stak_sort);
         pa(stak_sort,stak2);
     }
-    // pb(stak_sort,stak2);
-    // sort_tree_element(stak_sort);
-    // help = *stak_sort;
-    // first =  (*(int*)help->content);
-    // second =(*(int*)help->next->content);
-    // third = (*(int*)help->next->next->content);
-    // x = (*(int*)(*stak2)->content);
-    // if(x < first)
-    //     pa(stak_sort,stak2);
-    // else if(x > first && x < second)
-    // {
-    //     pa(stak_sort,stak2);
-    //     sa(stak_sort,'a');
-    // }
-    // else if(x > second && x < third)
-    // {
-    //     ra(stak_sort);
-    //     pa(stak_sort,stak2);
-    //     sa(stak_sort,'a');
-    //     rra(stak_sort);
-    // }
-    // else
-    // {
-    //     ra(stak_sort);
-    //     ra(stak_sort);
-    //     pa(stak_sort,stak2);
-    //     sa(stak_sort,'a');
-    //     rra(stak_sort);
-    //     rra(stak_sort);
-    // }
-    else 
-        return ;
 }
 void sort_five_element(t_list **stak_sort,t_list **stak2)
 { 
-    t_list *help;
-    int oune;
-    int too;
-    int three;
-    int foor ;
-    int x;
-    
-    pb(stak_sort,stak2);
-    sort_four_element(stak_sort,stak2);
+   t_list *help;
+    int min;
+    int pos = 0;
     help = *stak_sort;
-    oune =  (*(int*)help->content);
-    too =(*(int*)help->next->content);
-    three = (*(int*)help->next->next->content);
-    foor = (*(int*)help->next->next->next->content);
-    x = (*(int*)(*stak2)->content);
-    if(x < oune)
-        pa(stak_sort,stak2);
-    else if(x > oune && x < too)
+    min = (*(int*)help->content);
+    while(help)
     {
-        pa(stak_sort,stak2);
-        sa(stak_sort,'a');
+        if(min >= (*(int*)help->content))
+        {
+            min = (*(int*)help->content);
+            pos++;
+        }
+        help = help->next;
     }
-    else if(x > too && x < three)
+    if(pos == 1)
+    {
+        pb(stak_sort,stak2);
+       sort_four_element(stak_sort,stak2);
+        pa(stak_sort,stak2);
+    }
+    else if(pos == 2) // Changed this condition from pos == 1 to pos == 2
+    {
+        sa(stak_sort,'a');
+        pb(stak_sort,stak2);
+        sort_four_element(stak_sort,stak2);;
+        pa(stak_sort,stak2);
+    }
+    else if(pos == 3) // Changed this condition from pos == 2 to pos == 3
     {
         ra(stak_sort);
-        pa(stak_sort,stak2);
         sa(stak_sort,'a');
-        rra(stak_sort);
+        pb(stak_sort,stak2);
+        sort_four_element(stak_sort,stak2);;
+        pa(stak_sort,stak2);
     }
-    // else if(x > three && x < foor)
-    // else
-    // {
-    //     ra(stak_sort);
-    //     pa(stak_sort,stak2);
-    //     sa(stak_sort,'a');
-    //     rra(stak_sort);
-    // }
-    else 
-        return ;
+    else
+    {
+        rra(stak_sort);
+        pb(stak_sort,stak2);
+        sort_four_element(stak_sort,stak2);;
+        pa(stak_sort,stak2);
+    }
     
 }

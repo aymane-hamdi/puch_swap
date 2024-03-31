@@ -76,7 +76,7 @@ int main(int argc , char ** argv)
         ft_lstclear(&stak_a, del);
         return(0);
     }
-   sort_four_element(&stak_a,&stak_b);
+   sort_five_element(&stak_a,&stak_b);
     ptint_stak(stak_a);
     return(0);
 }
