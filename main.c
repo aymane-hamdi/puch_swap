@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/30 01:38:16 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/31 01:35:52 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,13 @@ int main(int argc , char ** argv)
             exit(1);
         }
     }
-    if (delete_double(stak_a) == 0)
+    if (!delete_double(stak_a) || !chek_sort(stak_a))
     {
         write(1,"Error\n",6);
         ft_lstclear(&stak_a, del);
         return(0);
     }
-    else
-    {
-        push(&stak_a, &stak_b, 'a');
-        ptint_stak(stak_a);
-        printf("**********\n");
-        ptint_stak(stak_b);
-    }
-   
+   sort_four_element(&stak_a,&stak_b);
+    ptint_stak(stak_a);
     return(0);
 }

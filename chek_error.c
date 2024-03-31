@@ -41,3 +41,21 @@ void del(void* content)
 {
     free(content);
 }
+int chek_sort(t_list *stak_a)
+{
+    t_list *help;
+    int count;
+
+    count = 1;
+    help = stak_a;
+    while(help->next)
+    {
+        if( *(int*)help->content < *(int*)help->next->content)
+            count++;
+        help = help->next;
+    }
+    if(ft_lstsize(stak_a) == count)
+        return(0);
+    else
+        return(1);
+}

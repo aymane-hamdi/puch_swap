@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:53:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/30 01:27:04 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/30 23:14:14 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,80 +16,146 @@ void sa(t_list **stak, char c)
 {
     t_list *tmp;
 
-    if(*stak == NULL || (*stak)->next == NULL)
-    {
-        write(1,"Error\n",6);
-        return;
-    }
-
+    if (ft_lstsize(*stak) < 2)
+	{
+		write(2,"Error\n",6);
+		return ;
+	}
     tmp = (*stak)->next;
     (*stak)->next = tmp->next;
     tmp->next = *stak;
     *stak = tmp;
 
     if(c == 'a')
-        write(1,"swap a\n",7);
+        write(1,"sa\n",3);
     if(c == 'b')
-        write(1,"swap b\n",7);
+        write(1,"sb\n",3);
 }
 void ss(t_list **stak_a,t_list **stak_b)
 {
+	if ((ft_lstsize(*stak_a) < 2) || (ft_lstsize(*stak_b) < 2))
+	{
+		write(2,"Error\n",6);
+		return ;
+	}
     sa(stak_a,'a');
     sa(stak_b,'b');
+	write(1,"ss\n",3);
 }
-void ft_lstdel_last(t_list **lst, void (*del)(void*))
+
+int push(t_list **stack_to, t_list **stack_from)
 {
-    t_list *last;
-    t_list *prev;
-
-    if(!(*lst) || !del) 
-        return;
-
-    last = ft_lstlast(*lst);
-
-    // If the list has only one node
-    if (*lst == last)
-    {
-        del(last->content);
-        free(last);
-        *lst = NULL;
-    }
-    else
-    {
-        prev = *lst;
-        while(prev->next != last)
-            prev = prev->next;
-        prev->next = NULL;
-        del(last->content);
-        free(last);
-    }
+	 t_list *tmp;
+    if (ft_lstsize(*stack_from) == 0)
+        return (-1);
+    tmp = *stack_from;
+    *stack_from = (*stack_from)->next;
+    tmp->next = *stack_to;
+    *stack_to = tmp;
+    return 0;
 }
-void push(t_list **from_stak, t_list **to_stak, char c)
+
+int	pa(t_list **stack_a, t_list **stack_b)
 {
-    if (from_stak == NULL || to_stak == NULL)
-    {
-        write(1, "Error: Null pointer\n", 20);
-        return;
-    }
-    if(c == 'a' && *from_stak == NULL)
-    {
-        write(1,"Error\n",6);
-        exit(1);
-    }
-    if(c == 'b' && *to_stak == NULL)
-    {
-        write(1,"Error\n",6);
-        exit(1);
-    }
-   t_list *last_node;
+	if (push(stack_a, stack_b) == -1)
+		return (-1);
+	ft_putendl_fd("pa", 1);
+	return (0);
+}
 
-    if (*from_stak == NULL)
-    {
-        write(1, "Invalid input.\n", 15);
-        return;
-    }
+int	pb(t_list **stack_a, t_list **stack_b)
+{
+	if (push(stack_b, stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("pb", 1);
+	return (0);
+}
+int	rotate(t_list **stack)
+{
+	t_list	*head;
+	t_list	*last;
 
-    last_node = ft_lstlast(*from_stak);
-    ft_lstadd_front(to_stak, last_node);
-    ft_lstdel_last(from_stak,del);
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
+	head = *stack;
+	last = ft_lstlast(head);
+	*stack = head->next;
+	head->next = NULL;
+	last->next = head;
+	return (0);
+}
+
+int	ra(t_list **stack_a)
+{
+	if (rotate(stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("ra", 1);
+	return (0);
+}
+
+int	rb(t_list **stack_b)
+{
+	if (rotate(stack_b) == -1)
+		return (-1);
+	ft_putendl_fd("rb", 1);
+	return (0);
+}
+
+int	rr(t_list **stack_a, t_list **stack_b)
+{
+	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+		return (-1);
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putendl_fd("rr", 1);
+	return (0);
+}
+
+int	reverseRotate(t_list **stack)
+{
+	t_list	*head;
+	t_list	*last;
+
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
+	head = *stack;
+	last = ft_lstlast(head);
+	while (head)
+	{
+		if (head->next->next == NULL)
+		{
+			 head->next = NULL;
+			 break ;
+		}
+		head = head->next;
+	}
+	last->next = *stack;
+	*stack = last;
+	return (0);
+}
+
+int	rra(t_list **stack_a)
+{
+	if (reverseRotate(stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("rra", 1);
+	return (0);
+}
+
+int	rrb(t_list **stack_b)
+{
+	if (reverseRotate(stack_b) == -1)
+		return (-1);
+	ft_putendl_fd("rrb", 1);
+	return (0);
+}
+
+int	rrr(t_list **stack_a, t_list **stack_b)
+{
+	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+		return (-1);
+	reverseRotate(stack_a);
+	reverseRotate(stack_b);
+	ft_putendl_fd("rrr", 1);
+	return (0);
 }
