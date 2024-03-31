@@ -6,12 +6,27 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 22:45:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/31 01:50:59 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/31 18:14:56 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h" 
 
+int	get_min(t_list **stack)
+{
+	t_list	*head;
+	int		min;
+
+	head = *stack;
+	min = (*(int *)head->content);
+	while (head->next)
+	{
+		head = head->next;
+		if (((*(int *)head->content) < min))
+			min =(*(int *)head->content);
+	}
+	return (min);
+}
 void sort_tree_element(t_list **stak)
 {
     t_list *help;
@@ -44,103 +59,41 @@ void sort_tree_element(t_list **stak)
 }
 void sort_four_element(t_list **stak_sort,t_list **stak2)
 {
-    t_list *help;
     int min;
-    int pos = 0;
-    help = *stak_sort;
-    min = (*(int*)help->content);
-    while(help)
-    {
-        if(min >= (*(int*)help->content))
-        {
-            min = (*(int*)help->content);
-            pos++;
-        }
-        help = help->next;
-    }
-    if(pos == 1)
-    {
-        pb(stak_sort,stak2);
-        sort_tree_element(stak_sort);
-        pa(stak_sort,stak2);
-    }
-    else if(pos == 2) // Changed this condition from pos == 1 to pos == 2
-    {
-        sa(stak_sort,'a');
-        pb(stak_sort,stak2);
-        sort_tree_element(stak_sort);
-        pa(stak_sort,stak2);
-    }
-    else if(pos == 3) // Changed this condition from pos == 2 to pos == 3
+
+    min = get_min(stak_sort);
+    while((*(int*)(*stak_sort)->content) != min)
     {
         ra(stak_sort);
-        sa(stak_sort,'a');
-        pb(stak_sort,stak2);
-        sort_tree_element(stak_sort);
-        pa(stak_sort,stak2);
     }
-    else
-    {
-        rra(stak_sort);
-        pb(stak_sort,stak2);
-        sort_tree_element(stak_sort);
-        pa(stak_sort,stak2);
-    }
+    pb(stak_sort,stak2);
+    sort_tree_element(stak_sort);
+    pa(stak_sort,stak2);
 }
 void sort_five_element(t_list **stak_sort,t_list **stak2)
 { 
-   t_list *help;
     int min;
-    int pos = 0;
-    help = *stak_sort;
-    min = (*(int*)help->content);
-    while(help)
-    {
-        if(min >= (*(int*)help->content))
-        {
-            min = (*(int*)help->content);
-            pos++;
-        }
-        help = help->next;
-    }
-    if(pos == 1)
-    {
-        pb(stak_sort,stak2);
-       sort_four_element(stak_sort,stak2);
-        pa(stak_sort,stak2);
-    }
-    else if(pos == 2)
-    {
-        sa(stak_sort,'a');
-        pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2); // Removed extra semicolon
-        pa(stak_sort,stak2);
-        sa(stak_sort,'a');
-        ra(stak_sort);
-    }
-    else if(pos == 3)
+
+    min = get_min(stak_sort);
+    while((*(int*)(*stak_sort)->content) != min)
     {
         ra(stak_sort);
-        sa(stak_sort,'a');
-        pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2); // Removed extra semicolon
-        pa(stak_sort,stak2);
-        rra(stak_sort);
-        sa(stak_sort,'a');
-        ra(stak_sort);
     }
-    else if(pos == 4) // Changed from else( pos == 4) to else if(pos == 4)
-    {
-        rra(stak_sort);
-        pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2); // Removed extra semicolon
-        pa(stak_sort,stak2);
-    }
+    pb(stak_sort,stak2);
+   sort_four_element(stak_sort,stak2);
+    pa(stak_sort,stak2);
+}
+void sort_simple(t_list **stak_sort,t_list **stak2)
+{
+    int len;
+
+    len = ft_lstsize(*stak_sort);
+    if(len == 3)
+        sort_tree_element(stak_sort);
+    if(len == 4)
+        sort_four_element(stak_sort,stak2);
+    if(len == 5)
+        sort_five_element(stak_sort,stak2);
     else
-    {
-        rra(stak_sort);
-        pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2); // Removed extra semicolon
-        pa(stak_sort,stak2);
-    }
+        return;
 }

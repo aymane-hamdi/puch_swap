@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/31 01:35:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/31 21:25:45 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ void ptint_stak( t_list  *stak_a)
         help = help->next;
     }
 }
-
+void sort(t_list **stak_sort,t_list **stak2)
+{
+    if(ft_lstsize(*stak_sort) <= 5)
+        sort_simple(stak_sort,stak2);
+    else
+       quickSort(stak_sort, stak2);
+}
 
 int main(int argc , char ** argv)
 {
@@ -72,11 +78,11 @@ int main(int argc , char ** argv)
     }
     if (!delete_double(stak_a) || !chek_sort(stak_a))
     {
-        write(1,"Error\n",6);
+        write(1,"Error double\n",14);
         ft_lstclear(&stak_a, del);
         return(0);
     }
-   sort_five_element(&stak_a,&stak_b);
-    ptint_stak(stak_a);
+    sort(&stak_a,&stak_b);
+    // ptint_stak(stak_b);
     return(0);
 }

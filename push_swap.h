@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/31 00:19:50 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/03/31 21:25:26 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include<unistd.h>
 #include "libft/libft.h"
 #include<string.h>
-
 void del(void* content);
 int	pa(t_list **stack_a, t_list **stack_b);
 int	pb(t_list **stack_a, t_list **stack_b);
@@ -36,4 +35,7 @@ int delete_double(t_list *stak_a);
 void sort_tree_element(t_list **stak);
 void sort_five_element(t_list **stak_sort,t_list **stak2);
 void sort_four_element(t_list **stak_sort,t_list **stak2);
+void   sort_simple(t_list **stak_sort,t_list **stak2);
+void quickSort(t_list **stack_a, t_list **stack_b);
+int	get_min(t_list **stack);
 #endif
