@@ -109,27 +109,38 @@ void sort_five_element(t_list **stak_sort,t_list **stak2)
        sort_four_element(stak_sort,stak2);
         pa(stak_sort,stak2);
     }
-    else if(pos == 2) // Changed this condition from pos == 1 to pos == 2
+    else if(pos == 2)
     {
         sa(stak_sort,'a');
         pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2);;
+        sort_four_element(stak_sort,stak2); // Removed extra semicolon
         pa(stak_sort,stak2);
+        sa(stak_sort,'a');
+        ra(stak_sort);
     }
-    else if(pos == 3) // Changed this condition from pos == 2 to pos == 3
+    else if(pos == 3)
     {
         ra(stak_sort);
         sa(stak_sort,'a');
         pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2);;
+        sort_four_element(stak_sort,stak2); // Removed extra semicolon
+        pa(stak_sort,stak2);
+        rra(stak_sort);
+        sa(stak_sort,'a');
+        ra(stak_sort);
+    }
+    else if(pos == 4) // Changed from else( pos == 4) to else if(pos == 4)
+    {
+        rra(stak_sort);
+        pb(stak_sort,stak2);
+        sort_four_element(stak_sort,stak2); // Removed extra semicolon
         pa(stak_sort,stak2);
     }
     else
     {
         rra(stak_sort);
         pb(stak_sort,stak2);
-        sort_four_element(stak_sort,stak2);;
+        sort_four_element(stak_sort,stak2); // Removed extra semicolon
         pa(stak_sort,stak2);
     }
-    
 }
