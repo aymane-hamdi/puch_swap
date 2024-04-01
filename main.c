@@ -32,7 +32,7 @@ void sort(t_list **stak_sort,t_list **stak2)
     if(ft_lstsize(*stak_sort) <= 5)
         sort_simple(stak_sort,stak2);
     else
-       quickSort(stak_sort, stak2);
+       sort_big(stak_sort, stak2);
 }
 
 int main(int argc , char ** argv)

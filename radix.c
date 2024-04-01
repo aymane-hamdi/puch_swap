@@ -11,38 +11,44 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void partition(t_list **stack_a, t_list **stack_b)
-{
-    int pivot = (*(int *)(*stack_a)->content);
-    t_list *current = (*stack_a);
 
-    while (current)
-    {
-        if ((*(int *)(current->content)) > pivot)
-        {
-            pb(stack_a, stack_b);
-            current = (*stack_a);
-        }
-        else
-        {
-            current = current->next;
-        }
-    }
+int	get_max(t_list **stack)
+{
+	t_list	*head;
+	int		max;
+
+	head = *stack;
+	max = (*(int *)head->content);
+	while (head->next)
+	{
+		head = head->next;
+		if (((*(int *)head->content) > max))
+			max =(*(int *)head->content);
+	}
+	return (max);
 }
-
-void quickSort(t_list **stack_a, t_list **stack_b)
+void sort_big(t_list **stak_sort,t_list **stak2)
 {
-    if (!(*stack_a) || !(*stack_a)->next)
-        return;
+    t_list *help;
+    t_list *help2;
+    int max;
 
-    partition(stack_a, stack_b);
-
-    quickSort(stack_a, stack_b);
-
-    while (*stack_b)
+   help = *stak_sort;
+while(help)
+{
+    pb(stak_sort,stak2);
+    help = help->next;
+}
+help = *stak2;
+while(help) // changed from while(stak2) to while(help)
+{
+    max = get_max(stak2);
+    help2 = *stak2;
+    while((*(int*)help2->content) != max)
     {
-        pa(stack_a, stack_b);
+        ra(stak2);
     }
-
-    quickSort(&((*stack_a)->next), stack_b);
+    pa(stak_sort,stak2);
+    help = help->next; // you also need to move to the next element in the stack
+}
 }

@@ -36,6 +36,6 @@ void sort_tree_element(t_list **stak);
 void sort_five_element(t_list **stak_sort,t_list **stak2);
 void sort_four_element(t_list **stak_sort,t_list **stak2);
 void   sort_simple(t_list **stak_sort,t_list **stak2);
-void quickSort(t_list **stack_a, t_list **stack_b);
+void sort_big(t_list **stak_sort,t_list **stak2);
 int	get_min(t_list **stack);
 #endif
