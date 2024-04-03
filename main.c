@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/03 01:01:48 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/03 23:01:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ void ptint_stak( t_list  *stak_a)
     {
       if (help->content)  // check that help->content is not NULL
       {
-          printf("%d", *((int *)help->content));
+          printf("%d\n", *((int *)help->content));
       }
-      printf("***********%d\n", help->index);
       help = help->next;
     }
 }
@@ -40,7 +39,7 @@ void sort(t_list **stak_sort,t_list **stak2)
     if(ft_lstsize(*stak_sort) <= 5)
         sort_simple(stak_sort,stak2);
     else
-     	return ;
+        sort_rang(stak_sort,stak2);
 }
 
 int main(int argc , char ** argv)
@@ -49,7 +48,7 @@ int main(int argc , char ** argv)
     int *p;
     t_list  *stak_a = NULL; 
     t_list  *stak_b = NULL;
-    t_list  *neoud =NULL;
+    t_list  *neoud = NULL;
     
     i = 0;
     if(argc == 2)
@@ -90,8 +89,7 @@ int main(int argc , char ** argv)
         ft_lstclear(&stak_a, del);
         return(0);
     }
-    // sort(&stak_a,&stak_b);
-    index_list(&stak_a);
+    sort(&stak_a,&stak_b);
     ptint_stak(stak_a);
     return(0);
 }

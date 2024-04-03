@@ -6,66 +6,120 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:00:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/03 00:58:42 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/03 23:06:13 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *remove_node(t_list *head, t_list *node_to_remove)
+// void sort_inverce(t_list **stak_a)
+// {
+//     int min = get_min(stak_a);
+//     while(min != *((int *)(*stak_a)->content))
+//     {
+//         rra(stak_a);
+//     }
+// }
+int position(t_list *head, int num)
 {
-    if (head == node_to_remove)
-    {
-        t_list *new_head = head->next;
-        free(head);
-        return new_head;
-    }
-
     t_list *current = head;
-    while (current && current->next != node_to_remove)
+    int pos = 0;
+    while (current != NULL)
     {
+        if (*((int *) current->content) == num)
+        {
+            return pos;
+        }
         current = current->next;
+        pos++;
     }
+    return -1;  // num not found in the list
+}
+int	get_max(t_list **stack)
+{
+	t_list	*head;
+	int		max;
 
-    if (current)
-    {
-        t_list *node_to_remove = current->next;
-        current->next = node_to_remove->next;
-        free(node_to_remove);
-    }
-
-    return head;
+	head = *stack;
+	max = (*(int *)head->content);
+	while (head->next)
+	{
+		head = head->next;
+		if (((*(int *)head->content) > max))
+			max =(*(int *)head->content);
+	}
+	return (max);
 }
 void index_list(t_list **stack)
 {
-    if (!stack || !*stack) return;  // check that stack and *stack are not NULL
-
-    t_list  *help;
-    t_list  *help2;
-    int min;
-    int indx;
-    help2 = *stack;
-    indx = 0;
-    while (help2)
+    t_list *current;
+    t_list *compare;
+     int index;
+    
+    if (stack == NULL || *stack == NULL)
+        return;   
+    current = *stack;
+    index = 0;
+    while (current)
     {
-        t_list *tmp2 = help2;
-        min = get_min(&tmp2);
-        printf("min = %d\n", min);
-        help = NULL;
-        for (t_list *tmp = help2; tmp; tmp = tmp->next)
+        compare = *stack;
+        while (compare)
         {
-            if (tmp->content && (*(int*)tmp->content) == min)  // check that tmp->content is not NULL
-            {
-                help = tmp;
-                break;
-            }
+            if (*((int *)current->content) > *((int *)compare->content))
+                index++;
+            compare = compare->next;
         }
-
-        if (help)
+        current->index = index;
+        index = 0;
+        current = current->next;
+    }
+}
+void sort_list(t_list **stak_sort,t_list **stak2)
+{
+    t_list  *help = NULL;
+    int min;
+    int max;
+    
+    max = 50;
+    if( ft_lstsize(*stak_sort)  <= 101)
+        max  = 15;
+    min = 0;
+    index_list(stak_sort);
+    while(help)
+    {
+        help = *stak_sort;
+        if(help->index >= min && help->index <= max)
         {
-            help->index = indx;
-            indx++;
-            help2 = remove_node(help2, help);
+            pb(stak_sort,stak2);
+            min++;
+            max++;
+            help = *stak_sort;
         }
+        else if(help->index < min)
+        {
+            pb(stak_sort,stak2);
+            rb(stak2);
+            min++;
+            max++;
+            help = *stak_sort;
+        }
+        else
+            ra(stak_sort);
+    }
+}
+void sort_rang(t_list **stack_sort, t_list **stack2)
+{
+    sort_list(stack_sort, stack2);
+    int max;
+    
+    while ( *stack2)
+    {
+        max = get_max(stack2);
+        if (*((int *) (*stack2)->content) == max)
+            pa(stack_sort, stack2);
+        else if(position( *stack2, max) <= ft_lstsize(*stack2)/2)
+             rb(stack2);
+        else
+            rrb(stack2);
     }
 }
