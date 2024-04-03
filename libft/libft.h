@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:08:20 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:25:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/01 22:46:55 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				index;
 	struct s_list	*next;
 }	t_list;
 

@@ -6,49 +6,66 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:00:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/31 22:31:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/03 00:58:42 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_max(t_list **stack)
+t_list *remove_node(t_list *head, t_list *node_to_remove)
 {
-	t_list	*head;
-	int		max;
-
-	head = *stack;
-	max = (*(int *)head->content);
-	while (head->next)
-	{
-		head = head->next;
-		if (((*(int *)head->content) > max))
-			max =(*(int *)head->content);
-	}
-	return (max);
-}
-void sort_big(t_list **stak_sort,t_list **stak2)
-{
-    t_list *help;
-    t_list *help2;
-    int max;
-
-   help = *stak_sort;
-while(help)
-{
-    pb(stak_sort,stak2);
-    help = help->next;
-}
-help = *stak2;
-while(help) // changed from while(stak2) to while(help)
-{
-    max = get_max(stak2);
-    help2 = *stak2;
-    while((*(int*)help2->content) != max)
+    if (head == node_to_remove)
     {
-        ra(stak2);
+        t_list *new_head = head->next;
+        free(head);
+        return new_head;
     }
-    pa(stak_sort,stak2);
-    help = help->next; // you also need to move to the next element in the stack
+
+    t_list *current = head;
+    while (current && current->next != node_to_remove)
+    {
+        current = current->next;
+    }
+
+    if (current)
+    {
+        t_list *node_to_remove = current->next;
+        current->next = node_to_remove->next;
+        free(node_to_remove);
+    }
+
+    return head;
 }
+void index_list(t_list **stack)
+{
+    if (!stack || !*stack) return;  // check that stack and *stack are not NULL
+
+    t_list  *help;
+    t_list  *help2;
+    int min;
+    int indx;
+    help2 = *stack;
+    indx = 0;
+    while (help2)
+    {
+        t_list *tmp2 = help2;
+        min = get_min(&tmp2);
+        printf("min = %d\n", min);
+        help = NULL;
+        for (t_list *tmp = help2; tmp; tmp = tmp->next)
+        {
+            if (tmp->content && (*(int*)tmp->content) == min)  // check that tmp->content is not NULL
+            {
+                help = tmp;
+                break;
+            }
+        }
+
+        if (help)
+        {
+            help->index = indx;
+            indx++;
+            help2 = remove_node(help2, help);
+        }
+    }
 }

@@ -158,3 +158,31 @@ int	rrr(t_list **stack_a, t_list **stack_b)
 	ft_putendl_fd("rrr", 1);
 	return (0);
 }
+void	free_stack(t_list **stack)
+{
+	t_list	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+/* exit_error:
+*   Writes "Error\n" to the standard output after freeing stack a and b.
+*	Exits with standard error code 1.
+*/
+void	exit_error(t_list **stack_a, t_list **stack_b)
+{
+	if (stack_a == NULL || *stack_a != NULL)
+		free_stack(stack_a);
+	if (stack_b == NULL || *stack_b != NULL)
+		free_stack(stack_b);
+	write(2, "Error\n", 6);
+	exit (1);
+}
