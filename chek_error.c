@@ -59,3 +59,22 @@ int chek_sort(t_list *stak_a)
     else
         return(1);
 }
+
+int chek_sort_inverse(t_list *stak_a)
+{
+    t_list *help;
+    int count;
+
+    count = 1;
+    help = stak_a;
+    while(help->next)
+    {
+        if( *(int*)help->content > *(int*)help->next->content)
+            count++;
+        help = help->next;
+    }
+    if(ft_lstsize(stak_a) == count)
+        return(1);
+    else
+        return(0);
+}

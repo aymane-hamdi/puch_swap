@@ -1,4 +1,4 @@
-src = operation.c sort.c radix.c main.c chek_error.c  
+src = operation.c sort.c radix.c main.c chek_error.c
 
 obj = $(src:.c=.o)
 
@@ -8,19 +8,19 @@ LIBFT = libft/libft.a
 all: $(NAME)
 
 $(NAME): $(obj)
-	@make -C libft
-	@gcc -Wall -Wextra -Werror -o $(NAME) $(obj)  $(LIBFT)
+	$(MAKE) -C libft bonus
+	gcc -o $(NAME) $(obj) $(LIBFT)
 
-%.o: %.c push_swap.h
-	@gcc -Wall -Wextra -Werror -c $< -o $@
+%.o: %.c
+	gcc -c $< -o $@
 
 clean:
-	@make clean -C libft
-	@rm -f $(obj)
+	$(MAKE) -C libft clean
+	rm -f $(obj)
 
 fclean: clean
-	@make fclean -C libft
-	@rm -f $(NAME)
+	$(MAKE) -C libft fclean
+	rm -f $(NAME)
 
 re: fclean all
 

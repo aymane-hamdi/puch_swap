@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
 void ptint_stak( t_list  *stak_a)
 {
      t_list  *help;
@@ -36,7 +37,9 @@ void ptint_stak( t_list  *stak_a)
 }
 void sort(t_list **stak_sort,t_list **stak2)
 {
-    if(ft_lstsize(*stak_sort) <= 5)
+    if (chek_sort_inverse(*stak_sort) == 1 && ft_lstsize(*stak_sort) >= 5)
+            reverse_list(stak_sort,stak2);
+    else if(ft_lstsize(*stak_sort) <= 5)
         sort_simple(stak_sort,stak2);
     else
         sort_rang(stak_sort,stak2);
@@ -90,6 +93,6 @@ int main(int argc , char ** argv)
         return(0);
     }
     sort(&stak_a,&stak_b);
-    ptint_stak(stak_a);
+//    ptint_stak(stak_a);
     return(0);
 }

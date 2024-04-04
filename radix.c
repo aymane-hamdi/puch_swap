@@ -12,14 +12,7 @@
 
 #include "push_swap.h"
 
-// void sort_inverce(t_list **stak_a)
-// {
-//     int min = get_min(stak_a);
-//     while(min != *((int *)(*stak_a)->content))
-//     {
-//         rra(stak_a);
-//     }
-// }
+
 int position(t_list *head, int num)
 {
     t_list *current = head;
@@ -80,11 +73,13 @@ void sort_list(t_list **stak_sort,t_list **stak2)
     int min;
     int max;
     
-    max = 50;
-    if( ft_lstsize(*stak_sort)  <= 101)
+    if( ft_lstsize(*stak_sort)  <= 100)
         max  = 15;
+    else
+        max = 32;
     min = 0;
     index_list(stak_sort);
+    help = *stak_sort;
     while(help)
     {
         help = *stak_sort;
@@ -107,18 +102,22 @@ void sort_list(t_list **stak_sort,t_list **stak2)
             ra(stak_sort);
     }
 }
+
+
 void sort_rang(t_list **stack_sort, t_list **stack2)
-{
-    sort_list(stack_sort, stack2);
+{ 
     int max;
-    
-    while ( *stack2)
+    int size;
+
+    sort_list(stack_sort, stack2);
+    while (*stack2)
     {
+        size = ft_lstsize(*stack2)/2;
         max = get_max(stack2);
         if (*((int *) (*stack2)->content) == max)
             pa(stack_sort, stack2);
-        else if(position( *stack2, max) <= ft_lstsize(*stack2)/2)
-             rb(stack2);
+        else if(position( *stack2, max) <= size)
+            rb(stack2);
         else
             rrb(stack2);
     }

@@ -97,3 +97,35 @@ void sort_simple(t_list **stak_sort,t_list **stak2)
     else
         return;
 }
+void reverse(t_list **head_ref) 
+{ 
+    t_list* prev   = NULL; 
+    t_list* current = *head_ref; 
+    t_list* next = NULL; 
+    while (current != NULL) 
+    { 
+        // Store next 
+        next  = current->next;   
+  
+        // Reverse current node's pointer 
+        current->next = prev;    
+  
+        // Move pointers one position ahead. 
+        prev = current; 
+        current = next; 
+    } 
+    *head_ref = prev; 
+} 
+
+void reverse_list(t_list **stack_a, t_list **stack_b)
+{
+    while(*stack_a)
+    {
+        pb(stack_a, stack_b);
+    }
+    reverse(stack_b); 
+    while(*stack_b)
+    {
+        pa(stack_a, stack_b);
+    }
+}
