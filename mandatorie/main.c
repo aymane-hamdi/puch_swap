@@ -90,9 +90,8 @@ int main(int argc , char ** argv)
     {
         write(1,"Error double\n",14);
         ft_lstclear(&stak_a, del);
-        return(0);
+        exit(1);;
     }
     sort(&stak_a,&stak_b);
-//    ptint_stak(stak_a);
     return(0);
 }

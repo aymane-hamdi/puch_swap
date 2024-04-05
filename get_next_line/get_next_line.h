@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 16:22:28 by ahamdi            #+#    #+#             */
-/*   Updated: 2023/12/22 16:47:10 by ahamdi           ###   ########.fr       */
+/*   Created: 2024/01/08 12:37:55 by ahamdi            #+#    #+#             */
+/*   Updated: 2024/01/16 15:44:53 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <stdlib.h>
+# include <unistd.h>
+#include"../libft/libft.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+#include<stdio.h>
+char	*ft_read(int fd, char *str, int r_byt);
+char	*ft_premierstr(char *str, int i);
+char	*ft_desiemstr(char *s, size_t i);
+char	*get_next_line(int fd);
+#endif

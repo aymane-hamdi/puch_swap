@@ -16,8 +16,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
-#include "libft/libft.h"
-#include<string.h>
+#include "../libft/libft.h"
+
 void del(void* content);
 int	pa(t_list **stack_a, t_list **stack_b);
 int	pb(t_list **stack_a, t_list **stack_b);

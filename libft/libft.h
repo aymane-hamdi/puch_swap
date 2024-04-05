@@ -57,7 +57,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 size_t	ft_strcat(char *dst, const char *src);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_tolower(int c);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
