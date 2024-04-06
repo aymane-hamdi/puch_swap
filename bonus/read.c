@@ -22,6 +22,7 @@ void prtint_stak( t_list  *stak_a)
       help = help->next;
     }
 }
+
 int chek_sort(t_list *stak_a)
 {
     t_list *help;

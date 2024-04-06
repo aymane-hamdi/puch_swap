@@ -27,6 +27,7 @@ int	get_min(t_list **stack)
 	}
 	return (min);
 }
+
 void sort_tree_element(t_list **stak)
 {
     t_list *help;
@@ -57,6 +58,7 @@ void sort_tree_element(t_list **stak)
     else
         return;
 }
+
 void sort_four_element(t_list **stak_sort,t_list **stak2)
 {
     int min;
@@ -70,6 +72,7 @@ void sort_four_element(t_list **stak_sort,t_list **stak2)
     sort_tree_element(stak_sort);
     pa(stak_sort,stak2);
 }
+
 void sort_five_element(t_list **stak_sort,t_list **stak2)
 { 
     int min;
@@ -83,6 +86,7 @@ void sort_five_element(t_list **stak_sort,t_list **stak2)
    sort_four_element(stak_sort,stak2);
     pa(stak_sort,stak2);
 }
+
 void sort_simple(t_list **stak_sort,t_list **stak2)
 {
     int len;

@@ -30,17 +30,14 @@ int delete_double(t_list *stak_a)
         while(help)
         {
             if (*(int*)(stak_a->content) == *(int*)(help->content))
-                return(0);
+                return(1);
             help = help->next;
         }
         stak_a = stak_a->next;
     }
-    return(1);
+    return(0);
 }
-void del(void* content)
-{
-    free(content);
-}
+
 int chek_sort(t_list *stak_a)
 {
     t_list *help;
@@ -55,9 +52,9 @@ int chek_sort(t_list *stak_a)
         help = help->next;
     }
     if(ft_lstsize(stak_a) == count)
-        return(0);
-    else
         return(1);
+    else
+        return(0);
 }
 
 int chek_sort_inverse(t_list *stak_a)

@@ -41,6 +41,7 @@ void index_list(t_list **stack);
 void sort_list(t_list **stak_sort,t_list **stak2);
 void sort_rang(t_list **stak_sort,t_list **stak2);
 int	get_max(t_list **stack);
+void	free_stack(t_list **stack);
 void reverse_list(t_list **stack_a, t_list **stack_b);
 int chek_sort_inverse(t_list *stak_a);
 #endif

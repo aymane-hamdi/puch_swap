@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 int position(t_list *head, int num)
 {
     t_list *current = head;
@@ -26,8 +25,9 @@ int position(t_list *head, int num)
         current = current->next;
         pos++;
     }
-    return -1;  // num not found in the list
+    return (-1);  // num not found in the list
 }
+
 int	get_max(t_list **stack)
 {
 	t_list	*head;
@@ -67,6 +67,7 @@ void index_list(t_list **stack)
         current = current->next;
     }
 }
+
 void sort_list(t_list **stak_sort,t_list **stak2)
 {
     t_list  *help = NULL;
