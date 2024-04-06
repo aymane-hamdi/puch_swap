@@ -1,5 +1,27 @@
 #include "puch_swap_bonus.h"
-
+void prtint_stak( t_list  *stak_a)
+{
+     t_list  *help;
+    if(ft_lstsize(stak_a) == 0)
+    {
+        write(1, "Empty stack.\n", 13);
+        return;
+    }
+    if (stak_a->content == NULL)
+    {
+        write(1, "Invalid input.\n", 15);
+        return;
+    }
+    help = stak_a;
+    while(help)
+    {
+      if (help->content)  // check that help->content is not NULL
+      {
+          printf("%d\n", *((int *)help->content));
+      }
+      help = help->next;
+    }
+}
 int chek_sort(t_list *stak_a)
 {
     t_list *help;
@@ -70,7 +92,7 @@ void  cheeek_sort(t_list  **stak_a , t_list  **stak_b)
 	}
 	if(chek_sort(*stak_a) == 0 && ft_lstsize(*stak_b) == 0)
 		write(1, "OK\n", 3);
+	
 	else
 		write(1, "KO\n", 3);
-
 }
