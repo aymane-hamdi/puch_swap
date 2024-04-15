@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/03 21:20:40 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/15 13:28:50 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "../libft/libft.h"
 
 void del(void* content);
+void error(t_list  **stak_a);
 int	pa(t_list **stack_a, t_list **stack_b);
 int	pb(t_list **stack_a, t_list **stack_b);
 void sa( t_list **stak, char c);

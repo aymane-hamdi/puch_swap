@@ -1,4 +1,4 @@
-src = mandatorie/operation.c mandatorie/sort.c mandatorie/radix.c mandatorie/main.c mandatorie/chek_error.c
+src = mandatorie/operation.c mandatorie/sort.c mandatorie/range.c mandatorie/main.c mandatorie/chek_error.c
 srcb =  bonus/chek_error_bonus.c bonus/operation_bonus.c bonus/puch_swap_bonus.c bonus/read.c get_next_line/get_next_line_utils.c  get_next_line/get_next_line.c
 
 obj = $(src:.c=.o)

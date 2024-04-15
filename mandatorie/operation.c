@@ -30,6 +30,7 @@ void sa(t_list **stak, char c)
     if(c == 'b')
         write(1,"sb\n",3);
 }
+
 void ss(t_list **stak_a,t_list **stak_b)
 {
 	if ((ft_lstsize(*stak_a) < 2) || (ft_lstsize(*stak_b) < 2))

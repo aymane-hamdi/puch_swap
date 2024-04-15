@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/03 23:01:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/15 13:29:10 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,7 @@ static void whil_loop(char **argv,int i,  t_list  **stak_a)
             ft_lstadd_back(stak_a, neoud); 
         }
         else
-        {
-           free_stack(stak_a);
-            write(1,"Error\n",6);
-            exit(1);
-        }
+        error(stak_a);
     }
 }
 

@@ -75,3 +75,9 @@ int chek_sort_inverse(t_list *stak_a)
     else
         return(0);
 }
+void error(t_list  **stak_a)
+{
+    free_stack(stak_a);
+    write(1,"Error\n",6);
+    exit(1);
+}

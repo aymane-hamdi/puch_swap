@@ -1,7 +1,6 @@
 import random
 
-# Générer une liste de nombres de 0 à 100
-nombres = list(range(500))
+nombres = list(range(100))
 
 # Mélanger aléatoirement la liste
 random.shuffle(nombres)
