@@ -79,6 +79,5 @@ void error(t_list  **stak_a)
 {
     free_stack(stak_a);
     ft_putstr_fd("Error\n",2);
-      system("leaks push_swap");
     exit(1);
 }

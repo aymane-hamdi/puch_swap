@@ -6,12 +6,12 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 21:08:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 15:51:00 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 18:55:25 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-static void error(void)
+static void error_at(void)
 {
 	write(2,"Error\n",6);
 	exit(1);
@@ -40,8 +40,8 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	if ((result >  2147483647) && signe == 1)
-		error();
+		error_at();
 	if ((result > 2147483648) && signe == -1)
-		error();
+		error_at();
 	return ((int)result * signe);
 }

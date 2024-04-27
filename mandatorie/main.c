@@ -6,18 +6,13 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 18:30:43 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 19:21:25 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-static void error_nomber(int *p)
- {
-    free(p);
-   ft_putstr_fd("Error\n",2);
-    exit(1);
-}
+
 void sort(t_list **stak_sort,t_list **stak2)
 {
     if (chek_sort_inverse(*stak_sort) == 1 && ft_lstsize(*stak_sort) >= 5)
@@ -31,15 +26,16 @@ void sort(t_list **stak_sort,t_list **stak2)
 static void whil_loop(char **argv,int i,  t_list  **stak_a)
 {
     t_list  *neoud = NULL;
-    unsigned long long *p;
-
+    int 	*p;
+	
+	
     while(argv[++i])
     {
+		p = malloc(sizeof(int*));
+		if(!p)
+        	exit(1);
         if(cheek(argv[i]) == 1)
-        { 
-            p = malloc(sizeof(int));
-            if(!p)
-                exit(0);
+        {
             *p = ft_atoi(argv[i]);
             neoud = ft_lstnew(p);
             if (neoud == NULL)
