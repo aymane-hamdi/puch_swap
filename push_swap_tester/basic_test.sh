@@ -275,7 +275,7 @@ do
 		printf "${RED}KO, stderr must be empty${NOCOLOR}\n"
 		FLAG="${RED}KO${NOCOLOR}"
 	else
-		./files/checker "$(cat $TRACE/size3/test_case_$i.txt)" < stdout 1> result 2>error_result
+		./files/checker_moi "$(cat $TRACE/size3/test_case_$i.txt)" < stdout 1> result 2>error_result
 		echo "OK" > ok
 		if [[ -s error_result ]];
 		then
@@ -355,7 +355,7 @@ do
 		printf "${RED}KO, stderr must be empty${NOCOLOR}\n"
 		FLAG="${RED}KO${NOCOLOR}"
 	else
-		./files/checker "$(cat $TRACE/size5/test_case_$i.txt)" < stdout 1> result 2>error_result
+		./files/checker_moi "$(cat $TRACE/size5/test_case_$i.txt)" < stdout 1> result 2>error_result
 		echo "OK" > ok
 		if [[ -s error_result ]];
 		then

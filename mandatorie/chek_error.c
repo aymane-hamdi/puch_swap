@@ -47,7 +47,7 @@ int chek_sort(t_list *stak_a)
     help = stak_a;
     while(help->next)
     {
-        if( *(int*)help->content < *(int*)help->next->content)
+        if(*(int*)help->content < *(int*)help->next->content)
             count++;
         help = help->next;
     }

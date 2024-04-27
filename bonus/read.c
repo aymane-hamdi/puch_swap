@@ -37,9 +37,9 @@ int chek_sort(t_list *stak_a)
         help = help->next;
     }
     if(ft_lstsize(stak_a) == count)
-        return(0);
-    else
         return(1);
+    else
+        return(0);
 }
 
 char 	*checker(void)
@@ -91,7 +91,7 @@ void  cheeek_sort(t_list  **stak_a , t_list  **stak_b)
 			rrr(stak_a, stak_b);
 		split++;
 	}
-	if(chek_sort(*stak_a) == 0 && ft_lstsize(*stak_b) == 0)
+	if(chek_sort(*stak_a) == 1 && ft_lstsize(*stak_b) == 0)
 		write(1, "OK\n", 3);
 	
 	else

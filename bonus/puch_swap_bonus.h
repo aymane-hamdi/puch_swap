@@ -7,6 +7,7 @@
 #include<unistd.h>
 
 int cheek(char *str);
+void error(t_list  **stak_a);
 int delete_double(t_list *stak_a);
 void del(void* content);
 void sa(t_list **stak, char c);

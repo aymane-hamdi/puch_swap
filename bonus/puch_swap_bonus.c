@@ -49,6 +49,5 @@ int main(int argc , char ** argv)
         free_stack(&stak_a);
         exit(0);
     }
-    sort(&stak_a,&stak_b);
-    return(0);
+    cheeek_sort(&stak_a ,&stak_b);
 }

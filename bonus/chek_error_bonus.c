@@ -30,14 +30,20 @@ int delete_double(t_list *stak_a)
         while(help)
         {
             if (*(int*)(stak_a->content) == *(int*)(help->content))
-                return(0);
+                return(1);
             help = help->next;
         }
         stak_a = stak_a->next;
     }
-    return(1);
+    return(0);
 }
 void del(void* content)
 {
     free(content);
+}
+void error(t_list  **stak_a)
+{
+    free_stack(stak_a);
+    ft_putstr_fd("Error\n",2);
+    exit(1);
 }
