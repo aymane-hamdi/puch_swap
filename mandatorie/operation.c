@@ -17,8 +17,8 @@ void sa(t_list **stak, char c)
 
     if (ft_lstsize(*stak) < 2)
 	{
-		write(2,"Error\n",6);
-		return ;
+	  ft_putstr_fd("Error\n",2);
+		exit(1);;
 	}
     tmp = (*stak)->next;
     (*stak)->next = tmp->next;
@@ -35,8 +35,8 @@ void ss(t_list **stak_a,t_list **stak_b)
 {
 	if ((ft_lstsize(*stak_a) < 2) || (ft_lstsize(*stak_b) < 2))
 	{
-		write(2,"Error\n",6);
-		return ;
+	  ft_putstr_fd("Error\n",2);
+		exit(1);;
 	}
     sa(stak_a,'a');
     sa(stak_b,'b');
@@ -47,7 +47,10 @@ int push(t_list **stack_to, t_list **stack_from)
 {
 	 t_list *tmp;
     if (ft_lstsize(*stack_from) == 0)
-        return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
     tmp = *stack_from;
     *stack_from = (*stack_from)->next;
     tmp->next = *stack_to;
@@ -58,7 +61,10 @@ int push(t_list **stack_to, t_list **stack_from)
 int	pa(t_list **stack_a, t_list **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	ft_putendl_fd("pa", 1);
 	return (0);
 }
@@ -66,7 +72,10 @@ int	pa(t_list **stack_a, t_list **stack_b)
 int	pb(t_list **stack_a, t_list **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	ft_putendl_fd("pb", 1);
 	return (0);
 }
@@ -76,7 +85,10 @@ int	rotate(t_list **stack)
 	t_list	*last;
 
 	if (ft_lstsize(*stack) < 2)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	head = *stack;
 	last = ft_lstlast(head);
 	*stack = head->next;
@@ -88,7 +100,10 @@ int	rotate(t_list **stack)
 int	ra(t_list **stack_a)
 {
 	if (rotate(stack_a) == -1)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	ft_putendl_fd("ra", 1);
 	return (0);
 }
@@ -96,7 +111,10 @@ int	ra(t_list **stack_a)
 int	rb(t_list **stack_b)
 {
 	if (rotate(stack_b) == -1)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	ft_putendl_fd("rb", 1);
 	return (0);
 }
@@ -104,7 +122,10 @@ int	rb(t_list **stack_b)
 int	rr(t_list **stack_a, t_list **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	rotate(stack_a);
 	rotate(stack_b);
 	ft_putendl_fd("rr", 1);
@@ -117,7 +138,10 @@ int	reverseRotate(t_list **stack)
 	t_list	*last;
 
 	if (ft_lstsize(*stack) < 2)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	head = *stack;
 	last = ft_lstlast(head);
 	while (head)
@@ -137,7 +161,10 @@ int	reverseRotate(t_list **stack)
 int	rra(t_list **stack_a)
 {
 	if (reverseRotate(stack_a) == -1)
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	ft_putendl_fd("rra", 1);
 	return (0);
 }
@@ -153,7 +180,10 @@ int	rrb(t_list **stack_b)
 int	rrr(t_list **stack_a, t_list **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	reverseRotate(stack_a);
 	reverseRotate(stack_b);
 	ft_putendl_fd("rrr", 1);
@@ -165,7 +195,10 @@ void	free_stack(t_list **stack)
 	t_list	*tmp;
 
 	if (!stack || !(*stack))
-		return ;
+	{
+	  ft_putstr_fd("Error\n",2);
+		exit(1);
+	}
 	while (*stack)
 	{
 		tmp = (*stack)->next;
@@ -181,6 +214,6 @@ void	exit_error(t_list **stack_a, t_list **stack_b)
 		free_stack(stack_a);
 	if (stack_b == NULL || *stack_b != NULL)
 		free_stack(stack_b);
-	write(2, "Error\n", 6);
+	 ft_putstr_fd("Error\n",2);
 	exit (1);
 }

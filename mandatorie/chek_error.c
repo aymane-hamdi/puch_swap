@@ -78,6 +78,7 @@ int chek_sort_inverse(t_list *stak_a)
 void error(t_list  **stak_a)
 {
     free_stack(stak_a);
-    write(1,"Error\n",6);
+    ft_putstr_fd("Error\n",2);
+      system("leaks push_swap");
     exit(1);
 }

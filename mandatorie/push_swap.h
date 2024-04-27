@@ -6,18 +6,18 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/15 13:28:50 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 16:13:10 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 # ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include<stdio.h>
+// #include<stdio.h>
 #include<stdlib.h>
-#include<unistd.h>
 #include "../libft/libft.h"
 
+void	exit_error(t_list **stack_a, t_list **stack_b);
 void del(void* content);
 void error(t_list  **stak_a);
 int	pa(t_list **stack_a, t_list **stack_b);

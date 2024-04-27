@@ -6,12 +6,17 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 21:08:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/28 20:54:24 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 15:51:00 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+static void error(void)
+{
+	write(2,"Error\n",6);
+	exit(1);
 
+}
 int	ft_atoi(const char *str)
 {
 	int					signe;
@@ -32,11 +37,11 @@ int	ft_atoi(const char *str)
 	while (*str && ft_isdigit(*str) == 1)
 	{
 		result = result * 10 + (*str - '0');
-		if ((result > 9223372036854775807) && signe == 1)
-			return (-1);
-		if ((result > 9223372036854775807) && signe == -1)
-			return (0);
 		str++;
 	}
+	if ((result >  2147483647) && signe == 1)
+		error();
+	if ((result > 2147483648) && signe == -1)
+		error();
 	return ((int)result * signe);
 }

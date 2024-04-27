@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 22:45:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/03/31 18:14:56 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 16:52:37 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,25 @@ void sort_four_element(t_list **stak_sort,t_list **stak2)
 void sort_five_element(t_list **stak_sort,t_list **stak2)
 { 
     int min;
-
+    t_list *lst;
+    
+    lst = NULL;
+    lst = ft_lstlast(*stak_sort);
     min = get_min(stak_sort);
-    while((*(int*)(*stak_sort)->content) != min)
+    
+    if((*(int*)lst->content) == min)
     {
-        ra(stak_sort);
+        rra(stak_sort);
+    }
+    else
+    {
+        while((*(int*)(*stak_sort)->content) != min)
+        {
+            ra(stak_sort);  
+        }
     }
     pb(stak_sort,stak2);
-   sort_four_element(stak_sort,stak2);
+    sort_four_element(stak_sort,stak2);
     pa(stak_sort,stak2);
 }
 
@@ -92,6 +103,11 @@ void sort_simple(t_list **stak_sort,t_list **stak2)
     int len;
 
     len = ft_lstsize(*stak_sort);
+    if(len == 2)
+    {
+        if((*(int*)(*stak_sort)->content) > (*(int*)(*stak_sort)->next->content))
+            sa(stak_sort,'a');
+    }
     if(len == 3)
         sort_tree_element(stak_sort);
     if(len == 4)
