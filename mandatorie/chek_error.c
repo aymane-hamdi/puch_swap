@@ -81,3 +81,27 @@ void error(t_list  **stak_a)
     ft_putstr_fd("Error\n",2);
     exit(1);
 }
+void	free_stack(t_list **stack)
+{
+	t_list	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+void	exit_error(t_list **stack_a, t_list **stack_b)
+{
+	if (stack_a == NULL || *stack_a != NULL)
+		free_stack(stack_a);
+	if (stack_b == NULL || *stack_b != NULL)
+		free_stack(stack_b);
+	write(2, "Error\n", 6);
+	exit (1);
+}
