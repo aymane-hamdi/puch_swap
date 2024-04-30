@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:08:20 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 16:12:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:28:23 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_toupper(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 char	*ft_strnstr(const char *str, const char *to_find, size_t len);
 void	*ft_memset(void *m, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

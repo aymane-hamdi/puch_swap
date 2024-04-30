@@ -1,107 +1,89 @@
-#include"push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chek_error.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/28 12:54:05 by ahamdi            #+#    #+#             */
+/*   Updated: 2024/04/28 12:57:36 by ahamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int cheek(char *str)
+#include "push_swap.h"
+
+int	cheek(char *str)
 {
-    int i;
+	int	i;
 
-    if(!str[0])
-        return(0);
-    i = 0;
-    if(str[i] == '-' || str[i] == '+')
-        i++;
-    if(!str[i])
-        return(0);
-    while(str[i])
-    {
-        if(ft_isdigit(str[i]) == 0)
-            return(0);
-        i++;
-    }
-    return(1);
-}
-
-int delete_double(t_list *stak_a)
-{
-    t_list *help;
-
-    while(stak_a)
-    {
-        help = stak_a->next;
-        while(help)
-        {
-            if (*(int*)(stak_a->content) == *(int*)(help->content))
-                return(1);
-            help = help->next;
-        }
-        stak_a = stak_a->next;
-    }
-    return(0);
-}
-
-int chek_sort(t_list *stak_a)
-{
-    t_list *help;
-    int count;
-
-    count = 1;
-    help = stak_a;
-    while(help->next)
-    {
-        if(*(int*)help->content < *(int*)help->next->content)
-            count++;
-        help = help->next;
-    }
-    if(ft_lstsize(stak_a) == count)
-        return(1);
-    else
-        return(0);
-}
-
-int chek_sort_inverse(t_list *stak_a)
-{
-    t_list *help;
-    int count;
-
-    count = 1;
-    help = stak_a;
-    while(help->next)
-    {
-        if( *(int*)help->content > *(int*)help->next->content)
-            count++;
-        help = help->next;
-    }
-    if(ft_lstsize(stak_a) == count)
-        return(1);
-    else
-        return(0);
-}
-void error(t_list  **stak_a)
-{
-    free_stack(stak_a);
-    ft_putstr_fd("Error\n",2);
-    exit(1);
-}
-void	free_stack(t_list **stack)
-{
-	t_list	*tmp;
-
-	if (!stack || !(*stack))
-		return ;
-	while (*stack)
+	if (!str[0])
+		return (0);
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		if (ft_isdigit(str[i]) == 0)
+			return (0);
+		i++;
 	}
-	*stack = NULL;
+	return (1);
 }
 
-void	exit_error(t_list **stack_a, t_list **stack_b)
+int	delete_double(t_list *stak_a)
 {
-	if (stack_a == NULL || *stack_a != NULL)
-		free_stack(stack_a);
-	if (stack_b == NULL || *stack_b != NULL)
-		free_stack(stack_b);
-	write(2, "Error\n", 6);
-	exit (1);
+	t_list	*help;
+
+	while (stak_a)
+	{
+		help = stak_a->next;
+		while (help)
+		{
+			if (*(int *)(stak_a->content) == *(int *)(help->content))
+				return (1);
+			help = help->next;
+		}
+		stak_a = stak_a->next;
+	}
+	return (0);
+}
+
+int	chek_sort(t_list *stak_a)
+{
+	t_list	*help;
+	int		count;
+
+	count = 1;
+	help = stak_a;
+	while (help->next)
+	{
+		if (*(int *)help->content < *(int *)help->next->content)
+			count++;
+		help = help->next;
+	}
+	if (ft_lstsize(stak_a) == count)
+		return (1);
+	else
+		return (0);
+}
+
+int	chek_sort_inverse(t_list *stak_a)
+{
+	t_list	*help;
+	int		count;
+
+	count = 1;
+	help = stak_a;
+	while (help->next)
+	{
+		if (*(int *)help->content > *(int *)help->next->content)
+			count++;
+		help = help->next;
+	}
+	if (ft_lstsize(stak_a) == count)
+		return (1);
+	else
+		return (0);
 }

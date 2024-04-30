@@ -1,5 +1,5 @@
-src = mandatorie/operation.c mandatorie/sort.c mandatorie/range.c mandatorie/main.c mandatorie/chek_error.c
-srcb =  bonus/chek_error_bonus.c bonus/operation_bonus.c bonus/puch_swap_bonus.c bonus/read.c get_next_line/get_next_line_utils.c  get_next_line/get_next_line.c
+src = mandatorie/operation.c mandatorie/sort.c mandatorie/range.c mandatorie/main.c mandatorie/chek_error.c mandatorie/error.c mandatorie/push_operation.c mandatorie/revers_rotat.c
+srcb =  bonus/chek_error_bonus.c bonus/operation_bonus.c bonus/puch_swap_bonus.c bonus/read_bonus.c get_next_line/get_next_line_utils.c  get_next_line/get_next_line.c bonus/revers_rotat_bonus.c  bonus/push_operation_bonus.c
 
 obj = $(src:.c=.o)
 objb = $(srcb:.c=.o)

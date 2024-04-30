@@ -1,87 +1,48 @@
-# push_swap_tester
+# Tester for push swap To see how it works
+push swap tester for 42 push_swap project
 
-### Usage
+This tester shows the performance of your push_swap program
 
-First, go to the root of your repository, which is where we can find your Makefile and do
+and check that your checker works correctly.
 
-```git clone https://github.com/LeoFu9487/push_swap_tester.git && cd push_swap_tester```
+* [How to run this tester?](#how-to-run-this-tester)
 
+## What's push_swap_tester?
 
-
-
-To see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5), run
-
-```bash basic_test.sh```
-
-
-
-If you want to see the test cases, check ```trace_basic```
+Push_swap_tester is a little tester that shows you how your push_swap works.
+It displays the number of instructions performed by your push_swap in color, with the average
+here is the colors means:
 
 
-After that, you can do medium and big stack test with this command
+- ![#23FF05](https://via.placeholder.com/15/23FF05/000000?text=+) `means so good`
+- ![#FFF705](https://via.placeholder.com/15/FFF705/000000?text=+) `means good`
+- ![#05FBFF](https://via.placeholder.com/15/05FBFF/000000?text=+) `means it's ok`
+- ![#D905FF](https://via.placeholder.com/15/D905FF/000000?text=+) `means bad`
+- ![#010CFA](https://via.placeholder.com/15/010CFA/000000?text=+) `means realy bad`
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `means eliminatory`
 
-```bash loop.sh <stack size> <loop times>```
+![Screenshot](screenshot.png)
 
-For example, this is the result of the following command
+## How to run this tester?
 
-```bash loop.sh 100 10```
+```bash
+git clone https://github.com/ael-bekk/push_swap_tester.git
+cd push_swap_tester/
+./tester.sh [path/push_swap] [path/checker (your checker or checker_mac)] [nb_of_tests]
+```
+### for example:
+the following command will perform one test with a stack of 2 & 3 & 5 & 100 & 500 integers, and check error two
+```bash
+./tester.sh ../push_swap ../checker
+```
+   
+the following command will perform 5 tests with a stack of 2 & 3 & 5 & 100 & 500 integers, and check error two
+```bash
+./tester.sh ../push_swap ../checker 5
+```
 
-![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
+## 📝 License
 
-And you can find those generated test cases and the output of your program in ```trace_loop```
+This project is licensed under the MIT - see the [LICENSE](LICENSE) file for details.
 
-### Debug
-
-To visualize how your program sorts numbers
-
-```bash debug.sh <numbers>```
-
-This is the result of the following command
-
-```bash debug.sh 9 4 8 7```
-
-![debugsh](https://user-images.githubusercontent.com/70040774/119276699-d6464380-bc1b-11eb-8c03-fe01a11b494f.png)
-
-To generate random numbers and visualize how your program sorts them, run  
-
-```bash debug.sh random <stack size>```
-
-This is the result of the following command
-
-```bash debug.sh random 10```
-
-![example2](https://user-images.githubusercontent.com/70040774/118052309-cceaea80-b382-11eb-8c9d-39675e9143ba.png)
-
-To generate a permutation of numbers from 0 to n-1
-
-```bash debug.sh clean <stack size>```
-
-this is the result of the following command
-
-```bash debug.sh clean 10```
-
-![example3](https://user-images.githubusercontent.com/70040774/118052350-daa07000-b382-11eb-95e4-c8715f70cc05.png)
-
-### Result 
-
-OK : Answer Correct
-
-KO : Wrong Answer
-
-TLE : Time Limit Exceeded, please check if there is an infinite loop in your program (or you can edit the variable ```TIME_LIMIT``` in *.sh file)
-
-ERROR : Unknown Instructions
-
-leaks command not found : can't test your memory with command ```leaks``` (If you're using MacOS but still receiving this, remove ```-fsanitize=address``` flag in your Makefile )
-
-### Clean
-
-```bash clean.sh```
-
-can remove every test case and output file
-
-### Contact : 
-
-yfu@student.42lyon.fr
-
-or DM me on the slack
+---

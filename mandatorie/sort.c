@@ -6,11 +6,11 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 22:45:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 16:52:37 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 12:59:07 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h" 
+#include "push_swap.h" 
 
 int	get_min(t_list **stack)
 {
@@ -23,115 +23,87 @@ int	get_min(t_list **stack)
 	{
 		head = head->next;
 		if (((*(int *)head->content) < min))
-			min =(*(int *)head->content);
+			min = (*(int *)head->content);
 	}
 	return (min);
 }
 
-void sort_tree_element(t_list **stak)
+void	sort_tree_element(t_list **stak)
 {
-    t_list *help;
-    int first;
-    int second;
-    int third;
-    
-    help = *stak;
-    first =  (*(int*)help->content);
-    second =(*(int*)help->next->content);
-    third = (*(int*)help->next->next->content);
-    if( first > second && second <  third && first < third)
-        sa(stak,'a');
-    else if(first > second && second >  third && first > third)
-    {
-        sa(stak,'a');
-        rra(stak);
-    }
-    else if( first > second && second <  third && first > third)
-        ra(stak);
-    else if( first < second && second >  third && first > third)
-       rra(stak);
-    else if( first < second && second >  third && first < third)
-    {
-        sa(stak,'a');
-        ra(stak);
-    }
-    else
-        return;
+	t_list	*help;
+	int		first;
+	int		second;
+	int		third;
+
+	help = *stak;
+	first = (*(int *)help->content);
+	second = (*(int *)help->next->content);
+	third = (*(int *)help->next->next->content);
+	if (first > second && second < third && first < third)
+		sa(stak, 'a');
+	else if (first > second && second > third && first > third)
+	{
+		sa(stak, 'a');
+		rra(stak);
+	}
+	else if (first > second && second < third && first > third)
+		ra(stak);
+	else if (first < second && second > third && first > third)
+		rra(stak);
+	else if (first < second && second > third && first < third)
+	{
+		sa(stak, 'a');
+		ra(stak);
+	}
 }
 
-void sort_four_element(t_list **stak_sort,t_list **stak2)
+void	sort_four_element(t_list **stak_sort, t_list **stak2)
 {
-    int min;
+	int	min;
 
-    min = get_min(stak_sort);
-    while((*(int*)(*stak_sort)->content) != min)
-    {
-        ra(stak_sort);
-    }
-    pb(stak_sort,stak2);
-    sort_tree_element(stak_sort);
-    pa(stak_sort,stak2);
+	min = get_min(stak_sort);
+	while ((*(int *)(*stak_sort)->content) != min)
+		ra(stak_sort);
+	pb(stak_sort, stak2);
+	sort_tree_element(stak_sort);
+	pa(stak_sort, stak2);
 }
 
-void sort_five_element(t_list **stak_sort,t_list **stak2)
-{ 
-    int min;
-    t_list *lst;
-    
-    lst = NULL;
-    lst = ft_lstlast(*stak_sort);
-    min = get_min(stak_sort);
-    
-    if((*(int*)lst->content) == min)
-    {
-        rra(stak_sort);
-    }
-    else
-    {
-        while((*(int*)(*stak_sort)->content) != min)
-        {
-            ra(stak_sort);  
-        }
-    }
-    pb(stak_sort,stak2);
-    sort_four_element(stak_sort,stak2);
-    pa(stak_sort,stak2);
+void	sort_five_element(t_list **stak_sort, t_list **stak2)
+{
+	int		min;
+	t_list	*lst;
+
+	lst = NULL;
+	lst = ft_lstlast(*stak_sort);
+	min = get_min(stak_sort);
+	if ((*(int *)lst->content) == min)
+		rra(stak_sort);
+	else
+	{
+		while ((*(int *)(*stak_sort)->content) != min)
+			ra(stak_sort);
+	}
+	pb(stak_sort, stak2);
+	sort_four_element(stak_sort, stak2);
+	pa(stak_sort, stak2);
 }
 
-void sort_simple(t_list **stak_sort,t_list **stak2)
+void	sort_simple(t_list **stak_sort, t_list **stak2)
 {
-    int len;
+	int	len;
 
-    len = ft_lstsize(*stak_sort);
-    if(len == 2)
-    {
-        if((*(int*)(*stak_sort)->content) > (*(int*)(*stak_sort)->next->content))
-            sa(stak_sort,'a');
-    }
-    if(len == 3)
-        sort_tree_element(stak_sort);
-    if(len == 4)
-        sort_four_element(stak_sort,stak2);
-    if(len == 5)
-        sort_five_element(stak_sort,stak2);
-    else
-        return;
-}
-
-void reverse_list(t_list **stack_a, t_list **stack_b)
-{
-    int size = ft_lstsize(*stack_a);
-    int i = 0;
-    while(i != size -1)
-    {
-        rra(stack_a);
-        pb(stack_a, stack_b);
-        i++;
-    }
-    i = 0;
-    while(i != size -1)
-    {
-        pa(stack_a, stack_b);
-        i++;
-    }
+	len = ft_lstsize(*stak_sort);
+	if (len == 2)
+	{
+		if ((*(int *)(*stak_sort)->content) > 
+			(*(int *)(*stak_sort)->next->content))
+			sa(stak_sort, 'a');
+	}
+	if (len == 3)
+		sort_tree_element(stak_sort);
+	if (len == 4)
+		sort_four_element(stak_sort, stak2);
+	if (len == 5)
+		sort_five_element(stak_sort, stak2);
 }
