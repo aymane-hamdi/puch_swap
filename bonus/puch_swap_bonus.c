@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 11:19:32 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/30 12:12:34 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ int	main(int argc, char **argv)
 	}
 	whil_loop(argv, i, &stak_a);
 	cheeek_sort(&stak_a, &stak_b);
+	free_stack(&stak_a);
+	free_stack(&stak_b);
 }

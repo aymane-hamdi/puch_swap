@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:04:40 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 11:18:42 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/30 11:37:49 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,15 @@ void	cheeek_sort(t_list **stak_a, t_list **stak_b)
 		}
 	}
 	if (chek_sort(*stak_a) == 1 && ft_lstsize(*stak_b) == 0)
+	{
+		free_stack(stak_a);
+		free_stack(stak_b);
 		write(1, "OK\n", 3);
+	}
 	else
+	{
+		free_stack(stak_a);
+		free_stack(stak_b);
 		write(1, "KO\n", 3);
+	}
 }

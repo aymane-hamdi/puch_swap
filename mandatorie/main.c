@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 12:53:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/30 12:16:44 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	sort(t_list **stak_sort, t_list **stak2)
 		sort_simple(stak_sort, stak2);
 	else
 		sort_rang(stak_sort, stak2);
+	free_stack(stak_sort);
+	free_stack(stak2);
 }
 
 static void	whil_loop(char **argv, int i, t_list **stak_a)

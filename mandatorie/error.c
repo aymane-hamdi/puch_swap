@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:56:24 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 12:58:53 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/30 12:14:12 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ void	free_stack(t_list **stack)
 	while (*stack)
 	{
 		tmp = (*stack)->next;
+		free((*stack)->content);
 		free(*stack);
 		*stack = tmp;
 	}
+	free(*stack);
 	*stack = NULL;
 }
 
