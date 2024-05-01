@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:17:27 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 12:10:39 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 21:28:14 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ void	free_stack(t_list **stack)
 	*stack = NULL;
 }
 
-void	exit_error(t_list **stack_a, t_list **stack_b)
+void	exit_error(t_list **stack_a, t_list **stack_b, char *str)
 {
 	if (stack_a == NULL || *stack_a != NULL)
 		free_stack(stack_a);
 	if (stack_b == NULL || *stack_b != NULL)
 		free_stack(stack_b);
+	free(str);
 	write(2, "Error\n", 6);
 	exit (1);
 }

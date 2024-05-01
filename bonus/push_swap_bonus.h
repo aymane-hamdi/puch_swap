@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:15 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 19:08:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 21:27:16 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 void	free_stack(t_list **stack);
-void	exit_error(t_list **stack_a, t_list **stack_b);
+void	exit_error(t_list **stack_a, t_list **stack_b, char *str);
 void	cheeek_sort(t_list **stak_a, t_list **stak_b);
 int		chek_sort(t_list *stak_a);
 #endif

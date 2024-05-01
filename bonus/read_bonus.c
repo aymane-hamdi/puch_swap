@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:04:40 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 21:18:23 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 21:27:51 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,32 @@ int	chek_sort(t_list *stak_a)
 		return (0);
 }
 
-static void	loop(char *str, t_list **stak_a, t_list **stak_b)
+static void	loop(char **str, t_list **stak_a, t_list **stak_b)
 {
-	if (ft_strncmp(str, "sa\n", 3) == 0)
+	if (ft_strncmp(*str, "sa\n", 3) == 0)
 		sa(stak_a, 'a');
-	else if (ft_strncmp(str, "sb\n", 3) == 0)
+	else if (ft_strncmp(*str, "sb\n", 3) == 0)
 		sa(stak_b, 'b');
-	else if (ft_strncmp(str, "ss\n", 3) == 0)
+	else if (ft_strncmp(*str, "ss\n", 3) == 0)
 		ss(stak_a, stak_b);
-	else if (ft_strncmp(str, "pa\n", 3) == 0)
+	else if (ft_strncmp(*str, "pa\n", 3) == 0)
 		pa(stak_a, stak_b);
-	else if (ft_strncmp(str, "pb\n", 3) == 0)
+	else if (ft_strncmp(*str, "pb\n", 3) == 0)
 		pb(stak_a, stak_b);
-	else if (ft_strncmp(str, "ra\n", 3) == 0)
+	else if (ft_strncmp(*str, "ra\n", 3) == 0)
 		ra(stak_a);
-	else if (ft_strncmp(str, "rb\n", 3) == 0)
+	else if (ft_strncmp(*str, "rb\n", 3) == 0)
 		rb(stak_b);
-	else if (ft_strncmp(str, "rr\n", 3) == 0)
+	else if (ft_strncmp(*str, "rr\n", 3) == 0)
 		rr(stak_a, stak_b);
-	else if (ft_strncmp(str, "rra\n", 4) == 0)
+	else if (ft_strncmp(*str, "rra\n", 4) == 0)
 		rra(stak_a);
-	else if (ft_strncmp(str, "rrb\n", 4) == 0)
+	else if (ft_strncmp(*str, "rrb\n", 4) == 0)
 		rrb(stak_b);
-	else if (ft_strncmp(str, "rrr\n", 4) == 0)
+	else if (ft_strncmp(*str, "rrr\n", 4) == 0)
 		rrr(stak_a, stak_b);
 	else
-		exit_error(stak_a, stak_b);
+		exit_error(stak_a, stak_b, *str);
 }
 
 void	cheeek_sort(t_list **stak_a, t_list **stak_b)
@@ -70,7 +70,7 @@ void	cheeek_sort(t_list **stak_a, t_list **stak_b)
 	line = get_next_line(0);
 	while (line)
 	{
-		loop(line, stak_a, stak_b);
+		loop(&line, stak_a, stak_b);
 		free(line);
 		line = get_next_line(0);
 	}
