@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:06:23 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 13:06:34 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:16:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,17 @@ void	rrr(t_list **stack_a, t_list **stack_b)
 	reverserotate(stack_a);
 	reverserotate(stack_b);
 	ft_putendl_fd("rrr", 1);
+}
+
+void	free_arry(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }

@@ -6,21 +6,18 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 12:22:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:17:57 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void free_arry(char **str)
+static void	else_loop(int *p, t_list **stak_a, char *str, char **argv)
 {
-	int i = 0;
-	while(str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	if (ft_count_words(str, ' ') > 1)
+		free_arry(argv);
+	free(p);
+	error(stak_a);
 }
 
 void	sort(t_list **stak_sort, t_list **stak2)
@@ -55,70 +52,31 @@ static void	whil_loop(char **argv, int i, t_list **stak_a, char *str)
 			ft_lstadd_back(stak_a, neoud); 
 		}
 		else
-		{
-			if(ft_count_words(str, ' ') > 1)
-				free_arry(argv);
-			free(p);
-			error(stak_a);
-		}
+			else_loop(p, stak_a, str, argv);
 	}
-	if(ft_count_words(str, ' ') > 1)
-			free_arry(argv);
+	if (ft_count_words(str, ' ') > 1)
+		free_arry(argv);
 	if (delete_double(*stak_a) == 1)
 		error(stak_a);
 }
 
-static void	chack_NLLL(char **argv)
-{
-	if(!argv)
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
-	}
-	else if(!argv[0])
-	{
-		free(argv);
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
-	}
-}
-
-static int	ft_count_words(char const *str, char sep)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i] != '\0')
-	{
-		while (str[i] == sep)
-			i++;
-		if (str[i] != '\0')
-			count++;
-		while (str[i] && str[i] != sep)
-			i++;
-	}
-	return (count);
-}
 int	main(int argc, char **argv)
 {
 	int		i;
 	t_list	*stak_a;
 	t_list	*stak_b;
-	char *str;
+	char	*str;
+
 	stak_a = NULL;
 	stak_b = NULL;
 	i = 0;
-
 	str = argv[1];
 	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
 		exit(0);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		chack_NLLL(argv);
-		i = -1;
+		chack_null(argv, &i);
 	}
 	whil_loop(argv, i, &stak_a, str);
 	if (chek_sort(stak_a) == 1)

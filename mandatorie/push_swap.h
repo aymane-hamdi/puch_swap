@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 13:01:58 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:16:12 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
+void	free_arry(char **str);
 int		position(t_list *head, int num);
-static int	ft_count_words(char const *str, char sep);
+void	chack_null(char **argv, int *i);
+int		ft_count_words(char const *str, char sep);
 void	exit_error(t_list **stack_a, t_list **stack_b);
 void	error(t_list **stak_a);
 void	sa(t_list **stak, char c);

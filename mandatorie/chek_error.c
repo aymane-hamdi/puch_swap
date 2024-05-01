@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:54:05 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 12:57:36 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:12:19 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,20 @@ int	chek_sort_inverse(t_list *stak_a)
 		return (1);
 	else
 		return (0);
+}
+
+void	chack_null(char **argv, int *i)
+{
+	if (!argv)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	else if (!argv[0])
+	{
+		free(argv);
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	*i = -1;
 }
