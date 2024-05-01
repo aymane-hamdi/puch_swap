@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 12:12:34 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 12:20:19 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ int	main(int argc, char **argv)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!argv || argv[0] == NULL)
-			exit(0);
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
 		i = -1;
 	}
 	whil_loop(argv, i, &stak_a);

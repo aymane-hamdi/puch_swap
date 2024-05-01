@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:00:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 10:25:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 11:53:18 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ int	position(t_list *head, int num)
 	while (current != NULL)
 	{
 		if (*((int *) current->content) == num)
-		{
-			return (pos);
-		}
+			break ;
 		current = current->next;
 		pos++;
 	}
-	exit(1);
+	return (pos);
 }
 
 int	get_max(t_list **stack)

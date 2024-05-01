@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 12:16:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 12:22:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ static void	whil_loop(char **argv, int i, t_list **stak_a)
 		error(stak_a);
 }
 
+static void	eror_arg(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -65,7 +71,7 @@ int	main(int argc, char **argv)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!argv || argv[0] == NULL)
-			exit(0);
+			eror_arg();
 		i = -1;
 	}
 	whil_loop(argv, i, &stak_a);
