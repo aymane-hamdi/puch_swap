@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 
+void free_arry(char **str)
+{
+	int i = 0;
+	while(str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
 void	sort(t_list **stak_sort, t_list **stak2)
 {
 	if (chek_sort_inverse(*stak_sort) == 1 && ft_lstsize(*stak_sort) >= 5)
@@ -24,7 +34,7 @@ void	sort(t_list **stak_sort, t_list **stak2)
 	free_stack(stak2);
 }
 
-static void	whil_loop(char **argv, int i, t_list **stak_a)
+static void	whil_loop(char **argv, int i, t_list **stak_a, int argc)
 {
 	t_list	*neoud;
 	int		*p;
@@ -44,10 +54,15 @@ static void	whil_loop(char **argv, int i, t_list **stak_a)
 			ft_lstadd_back(stak_a, neoud); 
 		}
 		else
+		{
+			free(p);
 			error(stak_a);
+		}
 	}
 	if (delete_double(*stak_a) == 1)
 		error(stak_a);
+	if(argc == 2)
+		free_arry(argv);
 }
 
 static void	eror_arg(void)
@@ -55,7 +70,6 @@ static void	eror_arg(void)
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
-
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -74,7 +88,7 @@ int	main(int argc, char **argv)
 			eror_arg();
 		i = -1;
 	}
-	whil_loop(argv, i, &stak_a);
+	whil_loop(argv, i, &stak_a, argc);
 	if (chek_sort(stak_a) == 1)
 	{
 		free_stack(&stak_a);

@@ -32,7 +32,10 @@ static void	whil_loop(char **argv, int i, t_list **stak_a)
 			ft_lstadd_back(stak_a, neoud); 
 		}
 		else
+		{
+			free(p);
 			error(stak_a);
+		}
 	}
 	if (delete_double(*stak_a) == 1)
 		error(stak_a);
