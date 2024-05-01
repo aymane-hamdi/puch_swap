@@ -22,6 +22,7 @@ void free_arry(char **str)
 	}
 	free(str);
 }
+
 void	sort(t_list **stak_sort, t_list **stak2)
 {
 	if (chek_sort_inverse(*stak_sort) == 1 && ft_lstsize(*stak_sort) >= 5)
@@ -34,7 +35,7 @@ void	sort(t_list **stak_sort, t_list **stak2)
 	free_stack(stak2);
 }
 
-static void	whil_loop(char **argv, int i, t_list **stak_a, int argc)
+static void	whil_loop(char **argv, int i, t_list **stak_a, char *str)
 {
 	t_list	*neoud;
 	int		*p;
@@ -55,40 +56,71 @@ static void	whil_loop(char **argv, int i, t_list **stak_a, int argc)
 		}
 		else
 		{
+			if(ft_count_words(str, ' ') > 1)
+				free_arry(argv);
 			free(p);
 			error(stak_a);
 		}
 	}
+	if(ft_count_words(str, ' ') > 1)
+			free_arry(argv);
 	if (delete_double(*stak_a) == 1)
 		error(stak_a);
-	if(argc == 2)
-		free_arry(argv);
 }
 
-static void	eror_arg(void)
+static void	chack_NLLL(char **argv)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
+	if(!argv)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	else if(!argv[0])
+	{
+		free(argv);
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+}
+
+static int	ft_count_words(char const *str, char sep)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		while (str[i] == sep)
+			i++;
+		if (str[i] != '\0')
+			count++;
+		while (str[i] && str[i] != sep)
+			i++;
+	}
+	return (count);
 }
 int	main(int argc, char **argv)
 {
 	int		i;
 	t_list	*stak_a;
 	t_list	*stak_b;
-
+	char *str;
 	stak_a = NULL;
 	stak_b = NULL;
 	i = 0;
-	if (argc == 1)
+
+	str = argv[1];
+	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
 		exit(0);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		if (!argv || argv[0] == NULL)
-			eror_arg();
+		chack_NLLL(argv);
 		i = -1;
 	}
-	whil_loop(argv, i, &stak_a, argc);
+	whil_loop(argv, i, &stak_a, str);
 	if (chek_sort(stak_a) == 1)
 	{
 		free_stack(&stak_a);

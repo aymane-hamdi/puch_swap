@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 
 int		position(t_list *head, int num);
+static int	ft_count_words(char const *str, char sep);
 void	exit_error(t_list **stack_a, t_list **stack_b);
 void	error(t_list **stak_a);
 void	sa(t_list **stak, char c);
