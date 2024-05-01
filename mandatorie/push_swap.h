@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 16:16:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 18:52:50 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
+void	sort(t_list **stak_sort, t_list **stak2);
 void	free_arry(char **str);
 int		position(t_list *head, int num);
 void	chack_null(char **argv, int *i);

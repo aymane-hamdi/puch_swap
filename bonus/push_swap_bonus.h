@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:15 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 16:33:50 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 19:08:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 
 int		cheek(char *str);
+void	free_arry(char **str);
 int		ft_count_words(char const *str, char sep);
 void	error(t_list **stak_a);
 int		delete_double(t_list *stak_a);

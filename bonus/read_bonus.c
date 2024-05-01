@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:04:40 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 17:58:15 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 20:56:56 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	chek_sort(t_list *stak_a)
 	t_list	*help;
 	int		count;
 
+	if (ft_lstsize(stak_a) == 0)
+		return (0);
 	count = 1;
 	help = stak_a;
 	while (help->next)
@@ -43,7 +45,7 @@ static void	loop(char *str, t_list **stak_a, t_list **stak_b)
 		pa(stak_a, stak_b);
 	else if (ft_strncmp(str, "pb\n", 3) == 0)
 		pb(stak_a, stak_b);
-	else if (ft_strncmp(str, "ra\n",3) == 0)
+	else if (ft_strncmp(str, "ra\n", 3) == 0)
 		ra(stak_a);
 	else if (ft_strncmp(str, "rb\n", 3) == 0)
 		rb(stak_b);

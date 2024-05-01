@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:06:23 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 11:12:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 20:57:18 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,32 @@ int	reverserotate(t_list **stack)
 void	rra(t_list **stack_a)
 {
 	if (reverserotate(stack_a) == -1)
-		error(stack_a);
+		return ;
 }
 
 void	rrb(t_list **stack_b)
 {
 	if (reverserotate(stack_b) == -1)
-		error(stack_b);
+		return ;
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		exit_error(stack_a, stack_b);
+		return ;
 	reverserotate(stack_a);
 	reverserotate(stack_b);
+}
+
+void	free_arry(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }

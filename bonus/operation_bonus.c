@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:53:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 16:33:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 18:11:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ int	rotate(t_list **stack)
 void	ra(t_list **stack_a)
 {
 	if (rotate(stack_a) == -1)
-		error(stack_a);
+		return ;
 }
 
 void	rb(t_list **stack_b)
 {
 	if (rotate(stack_b) == -1)
-		error(stack_b);
+		return ;
 }
 
 void	rr(t_list **stack_a, t_list **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		exit_error(stack_a, stack_b);
+		return ;
 	rotate(stack_a);
 	rotate(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 17:43:43 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 19:06:53 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@ static void	else_loop(int *p, t_list **stak_a, char *str, char **argv)
 	error(stak_a);
 }
 
-void	sort(t_list **stak_sort, t_list **stak2)
+static void	handl_erro(char **argv, int argc)
 {
-	if (chek_sort_inverse(*stak_sort) == 1 && ft_lstsize(*stak_sort) >= 5)
-		reverse_list(stak_sort, stak2);
-	else if (ft_lstsize(*stak_sort) <= 5)
-		sort_simple(stak_sort, stak2);
-	else
-		sort_rang(stak_sort, stak2);
-	free_stack(stak_sort);
-	free_stack(stak2);
+	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
+	{
+		if (cheek(argv[1]) == 0 || ft_atoi(argv[1]) > 2147483647 
+			|| ft_atoi(argv[1]) < -2147483648)
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
+		exit(0);
+	}
 }
 
 static void	whil_loop(char **argv, int i, t_list **stak_a, char *str)
@@ -71,8 +73,7 @@ int	main(int argc, char **argv)
 	stak_b = NULL;
 	i = 0;
 	str = argv[1];
-	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
-		exit(0);
+	handl_erro(argv, argc);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');

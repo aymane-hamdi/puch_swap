@@ -6,24 +6,11 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 16:33:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 20:56:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-static void	free_arry(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
 
 static void	else_loop(int *p, t_list **stak_a, char *str, char **argv)
 {
@@ -77,6 +64,20 @@ static void	chack_null(char **argv, int *i)
 	*i = -1;
 }
 
+static void	handl_erro(char **argv, int argc)
+{
+	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
+	{
+		if (cheek(argv[1]) == 0 || ft_atoi(argv[1]) > 2147483647 
+			|| ft_atoi(argv[1]) < -2147483648)
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
+		exit(0);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -88,8 +89,7 @@ int	main(int argc, char **argv)
 	stak_b = NULL;
 	i = 0;
 	str = argv[1];
-	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
-		exit(0);
+	handl_erro(argv, argc);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
@@ -97,4 +97,6 @@ int	main(int argc, char **argv)
 	}
 	whil_loop(argv, i, &stak_a, str);
 	cheeek_sort(&stak_a, &stak_b);
+	free_stack(&stak_a);
+	free_stack(&stak_b);
 }

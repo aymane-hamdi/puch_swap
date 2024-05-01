@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:54:05 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 16:12:19 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 18:53:29 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,6 @@ int	delete_double(t_list *stak_a)
 		stak_a = stak_a->next;
 	}
 	return (0);
-}
-
-int	chek_sort(t_list *stak_a)
-{
-	t_list	*help;
-	int		count;
-
-	count = 1;
-	help = stak_a;
-	while (help->next)
-	{
-		if (*(int *)help->content < *(int *)help->next->content)
-			count++;
-		help = help->next;
-	}
-	if (ft_lstsize(stak_a) == count)
-		return (1);
-	else
-		return (0);
-}
-
-int	chek_sort_inverse(t_list *stak_a)
-{
-	t_list	*help;
-	int		count;
-
-	count = 1;
-	help = stak_a;
-	while (help->next)
-	{
-		if (*(int *)help->content > *(int *)help->next->content)
-			count++;
-		help = help->next;
-	}
-	if (ft_lstsize(stak_a) == count)
-		return (1);
-	else
-		return (0);
 }
 
 void	chack_null(char **argv, int *i)
