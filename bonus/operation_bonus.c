@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:53:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 11:15:05 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:33:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,23 @@ void	rr(t_list **stack_a, t_list **stack_b)
 		exit_error(stack_a, stack_b);
 	rotate(stack_a);
 	rotate(stack_b);
+}
+
+int	ft_count_words(char const *str, char sep)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		while (str[i] == sep)
+			i++;
+		if (str[i] != '\0')
+			count++;
+		while (str[i] && str[i] != sep)
+			i++;
+	}
+	return (count);
 }

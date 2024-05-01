@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puch_swap_bonus.h                                  :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:15 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 14:17:08 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:33:50 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 
 int		cheek(char *str);
+int		ft_count_words(char const *str, char sep);
 void	error(t_list **stak_a);
 int		delete_double(t_list *stak_a);
 void	sa(t_list **stak, char c);

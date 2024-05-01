@@ -6,13 +6,34 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 12:20:19 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 16:33:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static void	whil_loop(char **argv, int i, t_list **stak_a)
+static void	free_arry(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+static void	else_loop(int *p, t_list **stak_a, char *str, char **argv)
+{
+	if (ft_count_words(str, ' ') > 1)
+		free_arry(argv);
+	free(p);
+	error(stak_a);
+}
+
+static void	whil_loop(char **argv, int i, t_list **stak_a, char *str)
 {
 	t_list	*neoud;
 	int		*p;
@@ -32,38 +53,48 @@ static void	whil_loop(char **argv, int i, t_list **stak_a)
 			ft_lstadd_back(stak_a, neoud); 
 		}
 		else
-		{
-			free(p);
-			error(stak_a);
-		}
+			else_loop(p, stak_a, str, argv);
 	}
+	if (ft_count_words(str, ' ') > 1)
+		free_arry(argv);
 	if (delete_double(*stak_a) == 1)
 		error(stak_a);
+}
+
+static void	chack_null(char **argv, int *i)
+{
+	if (!argv)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	else if (!argv[0])
+	{
+		free(argv);
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	*i = -1;
 }
 
 int	main(int argc, char **argv)
 {
 	int		i;
-	t_list	*stak_a; 
+	t_list	*stak_a;
 	t_list	*stak_b;
+	char	*str;
 
 	stak_a = NULL;
-	stak_b = NULL; 
+	stak_b = NULL;
 	i = 0;
-	if (argc == 1)
+	str = argv[1];
+	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
 		exit(0);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		if (!argv || argv[0] == NULL)
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit(1);
-		}
-		i = -1;
+		chack_null(argv, &i);
 	}
-	whil_loop(argv, i, &stak_a);
+	whil_loop(argv, i, &stak_a, str);
 	cheeek_sort(&stak_a, &stak_b);
-	free_stack(&stak_a);
-	free_stack(&stak_b);
 }
