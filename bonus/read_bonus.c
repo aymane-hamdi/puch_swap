@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:04:40 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 11:37:49 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 17:58:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,35 @@ int	chek_sort(t_list *stak_a)
 		return (0);
 }
 
-static char	*checker(void)
+static void	loop(char *str, t_list **stak_a, t_list **stak_b)
+{
+	if (ft_strncmp(str, "sa\n", 3) == 0)
+		sa(stak_a, 'a');
+	else if (ft_strncmp(str, "sb\n", 3) == 0)
+		sa(stak_b, 'b');
+	else if (ft_strncmp(str, "ss\n", 3) == 0)
+		ss(stak_a, stak_b);
+	else if (ft_strncmp(str, "pa\n", 3) == 0)
+		pa(stak_a, stak_b);
+	else if (ft_strncmp(str, "pb\n", 3) == 0)
+		pb(stak_a, stak_b);
+	else if (ft_strncmp(str, "ra\n",3) == 0)
+		ra(stak_a);
+	else if (ft_strncmp(str, "rb\n", 3) == 0)
+		rb(stak_b);
+	else if (ft_strncmp(str, "rr\n", 3) == 0)
+		rr(stak_a, stak_b);
+	else if (ft_strncmp(str, "rra\n", 4) == 0)
+		rra(stak_a);
+	else if (ft_strncmp(str, "rrb\n", 4) == 0)
+		rrb(stak_b);
+	else if (ft_strncmp(str, "rrr\n", 4) == 0)
+		rrr(stak_a, stak_b);
+	else
+		exit_error(stak_a, stak_b);
+}
+
+void	cheeek_sort(t_list **stak_a, t_list **stak_b)
 {
 	char	*line;
 	char	*str;
@@ -40,54 +68,10 @@ static char	*checker(void)
 	line = get_next_line(0);
 	while (line)
 	{
-		temp = str;
-		str = ft_strjoin(str, line);
-		free(temp);
+		loop(line, stak_a, stak_b);
 		line = get_next_line(0);
 	}
 	free(line);
-	return (str);
-}
-
-static void	loop(char *split, t_list **stak_a, t_list **stak_b)
-{
-	if (ft_strncmp(split, "sa", ft_strlen(split)) == 0)
-		sa(stak_a, 'a');
-	if (ft_strncmp(split, "sb", ft_strlen(split)) == 0)
-		sa(stak_b, 'b');
-	if (ft_strncmp(split, "ss", ft_strlen(split)) == 0)
-		ss(stak_a, stak_b);
-	if (ft_strncmp(split, "pa", ft_strlen(split)) == 0)
-		pa(stak_a, stak_b);
-	if (ft_strncmp(split, "pb", ft_strlen(split)) == 0)
-		pb(stak_a, stak_b);
-	if (ft_strncmp(split, "ra", ft_strlen(split)) == 0)
-		ra(stak_a);
-	if (ft_strncmp(split, "rb", ft_strlen(split)) == 0)
-		rb(stak_b);
-	if (ft_strncmp(split, "rr", ft_strlen(split)) == 0)
-		rr(stak_a, stak_b);
-	if (ft_strncmp(split, "rra", ft_strlen(split)) == 0)
-		rra(stak_a);
-	if (ft_strncmp(split, "rrb", ft_strlen(split)) == 0)
-		rrb(stak_b);
-	if (ft_strncmp(split, "rrr", ft_strlen(split)) == 0)
-		rrr(stak_a, stak_b);
-}
-
-void	cheeek_sort(t_list **stak_a, t_list **stak_b)
-{
-	char	**split;
-
-	split = ft_split(checker(), '\n');
-	if (split != NULL)
-	{
-		while (*split)
-		{
-			loop(*split, stak_a, stak_b);
-			split++;
-		}
-	}
 	if (chek_sort(*stak_a) == 1 && ft_lstsize(*stak_b) == 0)
 	{
 		free_stack(stak_a);
