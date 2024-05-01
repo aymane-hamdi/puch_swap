@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:04:40 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 20:56:56 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 21:18:23 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	cheeek_sort(t_list **stak_a, t_list **stak_b)
 	while (line)
 	{
 		loop(line, stak_a, stak_b);
+		free(line);
 		line = get_next_line(0);
 	}
 	free(line);

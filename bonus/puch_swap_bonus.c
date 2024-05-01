@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 20:56:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/01 21:17:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,6 @@ int	main(int argc, char **argv)
 	cheeek_sort(&stak_a, &stak_b);
 	free_stack(&stak_a);
 	free_stack(&stak_b);
+	printf("*******\n");
+	system("leaks checker");
 }
