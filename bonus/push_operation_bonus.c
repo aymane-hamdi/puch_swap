@@ -6,13 +6,13 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:03:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 18:17:04 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 16:41:20 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	sa(t_list **stak, char c)
+void	swap(t_list **stak)
 {
 	t_list	*tmp;
 
@@ -28,8 +28,8 @@ void	ss(t_list **stak_a, t_list **stak_b)
 {
 	if ((ft_lstsize(*stak_a) < 2) || (ft_lstsize(*stak_b) < 2))
 		return ;
-	sa(stak_a, 'a');
-	sa(stak_b, 'b');
+	swap(stak_a);
+	swap(stak_b);
 }
 
 int	push(t_list **stack_to, t_list **stack_from)

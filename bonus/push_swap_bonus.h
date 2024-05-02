@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:15 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 21:27:16 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 16:38:18 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_arry(char **str);
 int		ft_count_words(char const *str, char sep);
 void	error(t_list **stak_a);
 int		delete_double(t_list *stak_a);
-void	sa(t_list **stak, char c);
+void	swap(t_list **stak);
 void	ss(t_list **stak_a, t_list **stak_b);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);

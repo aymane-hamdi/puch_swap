@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:04:40 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 21:27:51 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 16:39:02 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	chek_sort(t_list *stak_a)
 static void	loop(char **str, t_list **stak_a, t_list **stak_b)
 {
 	if (ft_strncmp(*str, "sa\n", 3) == 0)
-		sa(stak_a, 'a');
+		swap(stak_a);
 	else if (ft_strncmp(*str, "sb\n", 3) == 0)
-		sa(stak_b, 'b');
+		swap(stak_b);
 	else if (ft_strncmp(*str, "ss\n", 3) == 0)
 		ss(stak_a, stak_b);
 	else if (ft_strncmp(*str, "pa\n", 3) == 0)
@@ -64,8 +64,6 @@ static void	loop(char **str, t_list **stak_a, t_list **stak_b)
 void	cheeek_sort(t_list **stak_a, t_list **stak_b)
 {
 	char	*line;
-	char	*str;
-	char	*temp;
 
 	line = get_next_line(0);
 	while (line)

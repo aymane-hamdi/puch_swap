@@ -1,72 +1,77 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puch_swap_bonus.c                                  :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 21:28:40 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 16:37:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static void	else_loop(int *p, t_list **stak_a, char *str, char **argv)
+static void	else_loop(t_list **stak_a, char **str)
 {
-	if (ft_count_words(str, ' ') > 1)
-		free_arry(argv);
-	free(p);
+	free_arry(str);
 	error(stak_a);
 }
 
-static void	whil_loop(char **argv, int i, t_list **stak_a, char *str)
+static void	while_loop_split(char **str, t_list **stak_a, t_list *neoud)
 {
-	t_list	*neoud;
-	int		*p;
+	int	j;
+	int	*p;
 
-	neoud = NULL;
-	while (argv[++i])
+	j = 0;
+	while (str[j])
 	{
-		p = malloc(sizeof(int *));
-		if (!p)
-			exit(1);
-		if (cheek(argv[i]) == 1)
+		if (cheek(str[j]) == 1)
 		{
-			*p = ft_atoi(argv[i]);
+			p = malloc(sizeof(int *));
+			if (p == NULL)
+				error(stak_a);
+			*p = ft_atoi(str[j]);
 			neoud = ft_lstnew(p);
 			if (neoud == NULL)
 				error(stak_a);
 			ft_lstadd_back(stak_a, neoud); 
 		}
 		else
-			else_loop(p, stak_a, str, argv);
+			else_loop(stak_a, str);
+		j++;
 	}
-	if (ft_count_words(str, ' ') > 1)
-		free_arry(argv);
-	if (delete_double(*stak_a) == 1)
-		error(stak_a);
 }
 
-static void	chack_null(char **argv, int *i)
+static void	whil_loop(char **argv, int argc, t_list **stak_a)
 {
-	if (!argv)
+	t_list	*neoud;
+	int		i;
+	char	**str;
+
+	neoud = NULL;
+	i = 1;
+	while (i < argc)
 	{
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		str = ft_split(argv[i], ' ');
+		if (str == NULL)
+			exit(1);
+		while_loop_split(str, stak_a, neoud);
+		free_arry(str);
+		i++;
 	}
-	else if (!argv[0])
-	{
-		free(argv);
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
-	}
-	*i = -1;
 }
 
 static void	handl_erro(char **argv, int argc)
 {
-	if (argc == 1 || (ft_count_words(argv[1], ' ') == 1 && argc == 2))
+	if (argc == 1)
+		exit(0);
+	if (ft_count_words(argv[1], ' ') == 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	if (ft_count_words(argv[1], ' ') == 1 && argc == 2)
 	{
 		if (cheek(argv[1]) == 0 || ft_atoi(argv[1]) > 2147483647 
 			|| ft_atoi(argv[1]) < -2147483648)
@@ -83,19 +88,14 @@ int	main(int argc, char **argv)
 	int		i;
 	t_list	*stak_a;
 	t_list	*stak_b;
-	char	*str;
 
 	stak_a = NULL;
 	stak_b = NULL;
 	i = 0;
-	str = argv[1];
 	handl_erro(argv, argc);
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		chack_null(argv, &i);
-	}
-	whil_loop(argv, i, &stak_a, str);
+	whil_loop(argv, argc, &stak_a);
+	if (delete_double(stak_a) == 1)
+		error(&stak_a);
 	cheeek_sort(&stak_a, &stak_b);
 	free_stack(&stak_a);
 	free_stack(&stak_b);
