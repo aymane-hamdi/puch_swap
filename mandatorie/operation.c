@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:53:36 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 16:18:14 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:24:11 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,8 @@ int	ft_count_words(char const *str, char sep)
 			i++;
 	}
 	return (count);
+}
+void chek_leaks(void)
+{
+	system("leaks push_swap");
 }

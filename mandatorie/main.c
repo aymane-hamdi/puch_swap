@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 16:55:39 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 16:18:42 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 16:45:11 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,12 @@ static void	whil_loop(char **argv, int argc, t_list **stak_a)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_list	*stak_a;
 	t_list	*stak_b;
 
 	stak_a = NULL;
 	stak_b = NULL;
-	i = 0;
+	atexit(chek_leaks);
 	handl_erro(argv, argc);
 	whil_loop(argv, argc, &stak_a);
 	if (delete_double(stak_a) == 1)

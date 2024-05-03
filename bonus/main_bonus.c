@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:09:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 16:37:15 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:26:57 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,12 @@ static void	handl_erro(char **argv, int argc)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_list	*stak_a;
 	t_list	*stak_b;
 
 	stak_a = NULL;
 	stak_b = NULL;
-	i = 0;
+	atexit(chek_leaks);
 	handl_erro(argv, argc);
 	whil_loop(argv, argc, &stak_a);
 	if (delete_double(stak_a) == 1)

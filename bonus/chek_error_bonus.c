@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:17:27 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/01 21:28:14 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:27:21 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,8 @@ void	exit_error(t_list **stack_a, t_list **stack_b, char *str)
 	free(str);
 	write(2, "Error\n", 6);
 	exit (1);
+}
+void chek_leaks(void)
+{
+	system("leaks checker");
 }
